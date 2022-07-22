@@ -8,3 +8,7 @@ module.exports.list = (req, res, next) => {
         })
         .catch(error => next(error))*/
 }
+
+module.exports.create = (req, res, next) => {
+    res.render("furanchos/new-furancho")
+}

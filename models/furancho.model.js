@@ -8,11 +8,24 @@ const furanchoSchema = new Schema({
         minLength: [3, "Ten que ter polo menos 3 caracteres"],
         maxLength: [30, "Excediches o número máximo de caracteres"]
     },
+    address: {
+        type: String,
+        required: "O furancho ten que ter enderezo, ou?",
+        minLength: [3, "Ten que ter polo menos 3 caracteres"],
+        maxLength: [50, "Excediches o número máximo de caracteres"]
+    },
+    phone: {
+        type: Number,
+        required: "O furancho ten que ter teléfono, ou?"
+    },
     openAt: {
         type: Date
     },
     closeAt: { 
         type: Date
+    },
+    schedule: {
+        type: String
     },
     location: {
         type: {
