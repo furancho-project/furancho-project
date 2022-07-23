@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
+const menus = require("../data/menus.json")
 
 const furanchoSchema = new Schema({
     name: {
@@ -16,13 +17,16 @@ const furanchoSchema = new Schema({
     },
     phone: {
         type: Number,
-        required: "O furancho ten que ter teléfono, ou?"
+        required: "O furancho ten que ter teléfono, ou?",
+        min: [9, "Non é un número válido"],
+        max: [9, "Non é un número válido"],
     },
     openAt: {
         type: Date
     },
     closeAt: { 
-        type: Date
+        type: Date,
+        //default: function() {this.openAt} utilizar moment.js
     },
     schedule: {
         type: String
@@ -31,11 +35,11 @@ const furanchoSchema = new Schema({
         type: {
             type: String,
             enum: ["Point"],
-            required: true
+            //required: true
         },
         coordinates: {
             type: [Number],
-            required: true,
+            //required: true,
         }
     },
     image: {
@@ -62,7 +66,7 @@ const furanchoSchema = new Schema({
     menu: {
         type: [{
             type: String,
-            enum: ["Táboa de embutidos-queixos", "Pementos, variedade Padrón", "Orella-chourizo", "Zorza-lombo", "Costela", "Ovos fritidos", "Sardiñas ou xureis", "Callos", "Tortilla de patacas", "Non ofrece comida"]
+            enum: menus
         }],
         required: true
     },
@@ -83,3 +87,6 @@ furanchoSchema.pre('validate', function (next) {
     this.image = this.image || undefined;
     next();
 });
+
+const Furancho = mongoose.model("Furancho", furanchoSchema);
+module.exports = Furancho;

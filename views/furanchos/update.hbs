@@ -1,0 +1,89 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-md-6 col-lg-8">
+
+    <h2>Actualiza datos do furancho</h2>
+
+    <form action="/furanchos/update" method="POST">
+
+      <div class="input-group mb-2">
+        <span class="input-group-text"><i class="fa fa-wine-bottle fa-fw"></i></span>
+        <input type="text" name="name" value="{{furancho.name}}"
+          class="form-control {{#if errors.name}}is-invalid{{/if}}" placeholder="Nome do Furancho">
+        {{#if errors.name}}<div class="invalid-feedback">{{errors.name}}</div>{{/if}}
+      </div>
+
+      <div class="input-group mb-2">
+        <span class="input-group-text"><i class="fa fa-phone fa-fw"></i></span>
+        <input type="text" name="phone" value="{{furancho.phone}}"
+          class="form-control {{#if errors.phone}}is-invalid{{/if}}" placeholder="Teléfono">
+        {{#if errors.phone}}<div class="invalid-feedback">{{errors.phone}}</div>{{/if}}
+      </div>
+
+      <div class="input-group mb-2">
+        <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
+        <textarea name="address" value="{{furancho.address}}"
+          class="form-control {{#if errors.address}}is-invalid{{/if}}" placeholder="Enderezo"></textarea>
+        {{#if errors.address}}<div class="invalid-feedback">{{errors.address}}</div>{{/if}}
+      </div>
+
+      <div class="input-group mb-2">
+        <span class="input-group-text"><i class="fa fa-location-dot fa-fw"></i></span>
+        <input type="text" name="location" value="{{furancho.location}}"
+          class="form-control {{#if errors.location}}is-invalid{{/if}}"
+          placeholder="Coordenadas 42.264672416, -8.7806074005">
+        {{#if errors.location}}<div class="invalid-feedback">{{errors.location}}</div>{{/if}}
+      </div>
+
+      <span>Accesibilidade:</span>
+      <div class="input-group mb-2">
+        <span class="input-group-text"><i class="fa-brands fa-accessible-icon fa-fw"></i></span>
+        <select name="accesibility" value="{{furancho.accesibility}}" class="form-control">
+          <option value="true" selected>Si</option>
+          <option value="false">Non</option>
+        </select>
+      </div>
+
+      <span>Zona exterior:</span>
+      <div class="input-group mb-2">
+        <span class="input-group-text"><i class="fa-solid fa-sun fa-fw"></i></span>
+        <select name="terrace" value="{{furancho.terrace}}" class="form-control">
+          <option value="true" selected>Si</option>
+          <option value="false">Non</option>
+        </select>
+      </div>
+
+      <span>Menú:</span>
+      <div class="input-group mb-2">
+        <span class="input-group-text"><i class="fa-solid fa-utensils fa-fw"></i></span>
+        <select name="menu" value="{{furancho.menu}}" class="form-control {{#if errors.menu}}is-invalid{{/if}}"
+          multiple>
+          {{#each menus as | menu |}}
+          <option value="{{menu}}">{{menu}}</option>
+          {{/each}}
+        </select>
+        {{#if errors.menu}}<div class="invalid-feedback">{{errors.menu}}</div>{{/if}}
+      </div>
+
+      <span>Apertura:</span>
+      <div class="input-group mb-2">
+        <span class="input-group-text"><i class="fa fa-calendar fa-fw"></i></span>
+        <input type="date" name="openAt" value="{{furancho.openAt}}"
+          class="form-control {{#if errors.openAt}}is-invalid{{/if}}">
+        {{#if errors.openAt}}<div class="invalid-feedback">{{errors.openAt}}</div>{{/if}}
+      </div>
+
+      <div class="input-group mb-2">
+        <span class="input-group-text"><i class="fa fa-picture-o fa-fw"></i></span>
+        <input type="text" name="image" value="{{ furancho.image }}"
+          class="form-control {{#if errors.image }}is-invalid{{/if}}" placeholder="Sube unha URL de imaxe" />
+        {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
+      </div>
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-success">Actualizar!</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
