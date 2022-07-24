@@ -3,7 +3,7 @@
 
     <h2>Actualiza datos do furancho</h2>
 
-    <form action="/furanchos/update" method="POST">
+    <form action="/furanchos/{{furancho.id}}/update" method="POST">
 
       <div class="input-group mb-2">
         <span class="input-group-text"><i class="fa fa-wine-bottle fa-fw"></i></span>
@@ -21,8 +21,8 @@
 
       <div class="input-group mb-2">
         <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
-        <textarea name="address" value="{{furancho.address}}"
-          class="form-control {{#if errors.address}}is-invalid{{/if}}" placeholder="Enderezo"></textarea>
+        <input name="address" value="{{furancho.address}}"
+          class="form-control {{#if errors.address}}is-invalid{{/if}}" placeholder="Enderezo"></input>
         {{#if errors.address}}<div class="invalid-feedback">{{errors.address}}</div>{{/if}}
       </div>
 

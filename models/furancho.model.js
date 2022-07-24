@@ -19,7 +19,7 @@ const furanchoSchema = new Schema({
         type: Number,
         required: "O furancho ten que ter teléfono, ou?",
         min: [9, "Non é un número válido"],
-        max: [9, "Non é un número válido"],
+        max: [10, "Non é un número válido"],
     },
     openAt: {
         type: Date

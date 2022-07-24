@@ -29,10 +29,51 @@ module.exports.doCreate = (req, res, next) => {
         })
 }
 
-module.exports.update = (req, res, next) => {
-    res.render("furanchos/update", { menus })
+module.exports.detail = (req, res, next) => {
+    Furancho.findById(req.params.id)
+        .then((furancho) => {
+            if (furancho) {
+                res.render("furanchos/detail", { furancho })
+            } else {
+                res.redirect("/furanchos")
+            }
+        })
+        .catch(err => next(err))
 }
 
-/*module.exports.doUpdate = (req, res, next) => {
+module.exports.update = (req, res, next) => {
+    Furancho.findById(req.params.id)
+        .then((furancho) => {
+            if (furancho) {
+                res.render("furanchos/update", { furancho, menus })
+            } else {
+                res.redirect("/furanchos")
+            }
+        })
+        .catch(err => next(err))
+}
 
-}*/
+module.exports.doUpdate = (req, res, next) => {
+        const furancho = req.body
+        Furancho.findByIdAndUpdate(req.params.id, furancho)
+        .then((furancho) => {
+                res.redirect(`/furanchos/${furancho.id}/detail`)
+        })
+        .catch(error => {
+            console.error(error)
+            if (error instanceof mongoose.Error.ValidationError) {
+                res.render("furanchos/new", { errors: error.errors, furancho, menus })
+            } else {
+                next(error)
+            }
+        })
+}
+
+module.exports.delete = (req, res, next) => {
+    Furancho.findByIdAndDelete(req.params.id)
+    .then(() => {
+        res.redirect("/furanchos")
+    })
+    .catch((err) => next(err))
+}
+
