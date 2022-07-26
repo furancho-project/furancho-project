@@ -7,7 +7,8 @@ const furanchoSchema = new Schema({
         type: String,
         required: "O furancho ten que ter nome, ou?",
         minLength: [3, "Ten que ter polo menos 3 caracteres"],
-        maxLength: [30, "Excediches o número máximo de caracteres"]
+        maxLength: [30, "Excediches o número máximo de caracteres"],
+        trim: true
     },
     address: {
         type: String,
@@ -20,6 +21,7 @@ const furanchoSchema = new Schema({
         required: "O furancho ten que ter teléfono, ou?",
         min: [9, "Non é un número válido"],
         max: [10, "Non é un número válido"],
+        trim: true
     },
     openAt: {
         type: Date
