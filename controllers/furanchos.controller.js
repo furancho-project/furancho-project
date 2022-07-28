@@ -16,6 +16,8 @@ module.exports.create = (req, res, next) => {
 
 module.exports.doCreate = (req, res, next) => {
     const furancho = req.body
+    
+    furancho.image = req.file.path
 
     Furancho.create(furancho)
         .then(furancho => res.redirect("/furanchos"))
@@ -55,6 +57,9 @@ module.exports.update = (req, res, next) => {
 
 module.exports.doUpdate = (req, res, next) => {
         const furancho = req.body
+
+        furancho.image = req.file.path
+        
         Furancho.findByIdAndUpdate(req.params.id, furancho)
         .then((furancho) => {
                 res.redirect(`/furanchos/${furancho.id}/detail`)
@@ -70,6 +75,7 @@ module.exports.doUpdate = (req, res, next) => {
 }
 
 module.exports.delete = (req, res, next) => {
+    confirm("Borrar furancho?")
     Furancho.findByIdAndDelete(req.params.id)
     .then(() => {
         res.redirect("/furanchos")

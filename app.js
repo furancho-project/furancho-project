@@ -1,7 +1,11 @@
 require("dotenv").config()
 
+
 const express = require("express");
+const createError = require("http-errors")
 const app = express();
+
+
 
 app.set("views", __dirname + "/views")
 app.set("view engine", "hbs")
@@ -16,7 +20,19 @@ require("./config/hbs.config")
 const router = require('./config/routes.config');
 app.use('/', router);
 
+app.use((req, res, next) => {
+    next(createError(404, "Page not found"));
+});
 
-const port = 3000;
+app.use((error, req, res, next) => {
+    console.error(error);
+    const message = error.message;
+    const metadata = app.get("env") === "development" ? error : {};
+    const status = error.status || 500;
+    res.status(status).render(`errors/500`, { message, metadata });
+});
+
+
+const port = 3000; 
 
 app.listen(port, () => console.log(`App ready! Listening on port ${port}`))

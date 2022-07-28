@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-4">
+        <h2>Rexistro</h2>
+        <form action="/register" method="post" enctype="multipart/form-data">
+            <div class="input-group mb-1">
+                <span class="input-group-text"><i class="fa fa-user fa-fw"></i></span>
+                <input type="text" name="name" value="{{ user.name }}"
+                    class="form-control {{#if errors.name }}is-invalid{{/if}}" placeholder="User name">
+                {{#if errors.name}}<div class="invalid-feedback">{{ errors.name }}</div>{{/if}}
+            </div>
+            <div class="input-group mb-1">
+                <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
+                <input type="text" name="email" value="{{ user.email }}"
+                    class="form-control {{#if errors.email }}is-invalid{{/if}}" placeholder="name@exaple.org">
+                {{#if errors.email}}<div class="invalid-feedback">{{ errors.email }}</div>{{/if}}
+            </div>
+            <div class="input-group mb-1">
+                <span class="input-group-text"><i class="fa fa-lock fa-fw"></i></span>
+                <input type="password" name="password" class="form-control {{#if errors.password }}is-invalid{{/if}}"
+                    placeholder="User password">
+                {{#if errors.password}}<div class="invalid-feedback">{{ errors.password }}</div>{{/if}}
+            </div>
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="fa fa-picture-o fa-fw"></i></span>
+                <input type="text" name="image" value="{{ furancho.image }}"
+                    class="form-control {{#if errors.image }}is-invalid{{/if}}" placeholder="Sube  o teu avatar" />
+                {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
+            </div>
+
+            <div class="d-grid">
+                <button class="btn btn-primary" type="submit">Register</button>
+            </div>
+        </form>
+        <hr>
+        <div class="d-grid">
+            <a class="btn btn-secondary" href="/login">Login</a>
+        </div>
+    </div>
+</div>

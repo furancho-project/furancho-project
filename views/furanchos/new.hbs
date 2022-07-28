@@ -3,7 +3,7 @@
 
     <h2>Engade un novo furancho</h2>
 
-    <form action="/furanchos/new" method="POST">
+    <form action="/furanchos/new" method="POST" enctype="multipart/form-data">
 
       <div class="input-group mb-2">
         <span class="input-group-text"><i class="fa fa-wine-bottle fa-fw"></i></span>
@@ -21,8 +21,8 @@
 
       <div class="input-group mb-2">
         <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
-        <textarea name="address" value="{{furancho.address}}"
-          class="form-control {{#if errors.address}}is-invalid{{/if}}" placeholder="Enderezo"></textarea>
+        <input name="address" value="{{furancho.address}}"
+          class="form-control {{#if errors.address}}is-invalid{{/if}}" placeholder="Enderezo">
         {{#if errors.address}}<div class="invalid-feedback">{{errors.address}}</div>{{/if}}
       </div>
 
@@ -74,7 +74,7 @@
 
       <div class="input-group mb-2">
         <span class="input-group-text"><i class="fa fa-picture-o fa-fw"></i></span>
-        <input type="text" name="image" value="{{ furancho.image }}"
+        <input type="file" name="image" value="{{ furancho.image }}"
           class="form-control {{#if errors.image }}is-invalid{{/if}}" placeholder="Sube unha URL de imaxe" />
         {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
       </div>
