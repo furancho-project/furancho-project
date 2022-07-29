@@ -14,5 +14,7 @@ router.post("/furanchos/:id/delete", furanchos.delete)
 
 router.get("/register", auth.register);
 router.post("/register", upload.single('avatar'), auth.doRegister)
+router.get("/login", auth.login);
+router.post("/login", auth.doLogin);
 
 module.exports = router;
