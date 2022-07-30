@@ -2,6 +2,8 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 const menus = require("../data/menus.json")
 
+PHONE_PATTERN = /^(6|7|8|9)([0-9][ -]*){8}$/
+
 const furanchoSchema = new Schema({
     name: {
         type: String,
@@ -17,14 +19,13 @@ const furanchoSchema = new Schema({
         maxLength: [50, "Excediches o número máximo de caracteres"]
     },
     phone: {
-        type: Number,
+        type: String,
         required: "O furancho ten que ter teléfono, ou?",
-        min: [8, "Non é un número válido"],
-        //max: [10, "Non é un número válido"],
-        trim: true
+        match: [PHONE_PATTERN,"Non é un número válido"],
+        trim: true,
     },
     openAt: {
-        type: Date
+        type: Date,
     },
     closeAt: { 
         type: Date,
@@ -83,7 +84,9 @@ const furanchoSchema = new Schema({
     ratings: {
         type: String,
     }
-})
+},
+//{timestamps: true}
+)
 
 furanchoSchema.pre('validate', function (next) {
     this.image = this.image || undefined;

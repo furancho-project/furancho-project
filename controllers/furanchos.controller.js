@@ -68,14 +68,14 @@ module.exports.doUpdate = (req, res, next) => {
             furancho.image = "https://imagenes.20minutos.es/files/image_990_v3/uploads/imagenes/2022/05/04/cunca-vino.jpeg"  
         }
         
-        Furancho.findByIdAndUpdate(req.params.id, furancho)
+        Furancho.findByIdAndUpdate(req.params.id, furancho, { runValidators: true })
         .then((furancho) => {
                 res.redirect(`/furanchos/${furancho.id}/detail`)
         })
         .catch(error => {
             console.error(error)
             if (error instanceof mongoose.Error.ValidationError) {
-                res.render("furanchos/new", { errors: error.errors, furancho, menus })
+                res.render("furanchos/update", { errors: error.errors, furancho, menus })
             } else {
                 next(error)
             }
@@ -83,7 +83,7 @@ module.exports.doUpdate = (req, res, next) => {
 }
 
 module.exports.delete = (req, res, next) => {
-    confirm("Borrar furancho?")
+    
     Furancho.findByIdAndDelete(req.params.id)
     .then(() => {
         res.redirect("/furanchos")

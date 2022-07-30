@@ -9,11 +9,11 @@
                     <h5 class="card-title">{{furancho.name}}</h5>
                     <p class="card-text"><b>Dirección:</b><br>{{furancho.address}}</p>
                     <p class="card-text"><b>Teléfono:</b><br>{{furancho.phone}}</p>
-                    <p class="card-text"><b>Apertura:</b><br>{{furancho.openAt}}</p>
+                    <p class="card-text"><b>Apertura:</b><br>{{prettyDate furancho.openAt}}</p>
                     <p class="card-text"><b>Peche:</b><br>{{furancho.closeAt}}</p>
                     <p class="card-text"><b>Ubicación:</b><br>{{furancho.location}}</p>
-                    <p class="card-text"><b>Accesibilidade:</b><br>{{furancho.accesibility}}</p>
-                    <p class="card-text"><b>Zona Exterior:</b><br>{{furancho.terrace}}</p>
+                    <p class="card-text"><b>Accesibilidade:</b><br>{{#if furancho.accesibility}}Si{{else}}No{{/if}}</p>
+                    <p class="card-text"><b>Zona Exterior:</b><br>{{#if furancho.terrace}}Si{{else}}No{{/if}}</p>
                     <p class="card-text"><b>Menú:</b><br>{{furancho.menu}}</p>
                     <p class="card-text"><b>Horario:</b><br>{{furancho.schedule}}</p>
                     <a href="/furanchos/{{furancho.id}}/detail" class="btn btn-primary">Ver detalles</a>
