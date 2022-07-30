@@ -32,7 +32,7 @@ const userSchema = new Schema(
         },
         avatar: {
             type: String,
-            default: "https://pbs.twimg.com/media/E9AHSreXoAMEdAf.jpg",
+            /*default: "https://pbs.twimg.com/media/E9AHSreXoAMEdAf.jpg",
             validate: {
                 validator: function (image) {
                     try {
@@ -43,10 +43,15 @@ const userSchema = new Schema(
                     }
                 },
                 message: image => `Invalid URL`
-            },
+            },*/
         },
     }
 )
+
+userSchema.pre('validate', function (next) {
+    this.avatar = this.avatar || undefined;
+    next();
+});
 
 userSchema.pre("save", function (next) {
     if (this.isModified("password")) {

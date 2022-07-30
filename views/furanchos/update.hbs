@@ -74,7 +74,7 @@
 
       <div class="input-group mb-2">
         <span class="input-group-text"><i class="fa fa-picture-o fa-fw"></i></span>
-        <input type="text" name="image" value="{{ furancho.image }}"
+        <input type="file" name="image" value="{{ furancho.image }}"
           class="form-control {{#if errors.image }}is-invalid{{/if}}" placeholder="Sube unha URL de imaxe" />
         {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
       </div>

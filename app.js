@@ -5,8 +5,6 @@ const express = require("express");
 const createError = require("http-errors")
 const app = express();
 
-
-
 app.set("views", __dirname + "/views")
 app.set("view engine", "hbs")
 
@@ -16,6 +14,12 @@ app.use(express.urlencoded({ extended: false }))
 
 require("./config/db.config")
 require("./config/hbs.config")
+
+const { session, loadUser } = require("./config/session.config")
+app.use(session)
+app.use(loadUser)
+
+
 
 const router = require('./config/routes.config');
 app.use('/', router);

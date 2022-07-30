@@ -8,7 +8,12 @@ module.exports.register = (req, res, next) => {
 
 module.exports.doRegister = (req, res, next) => {
     const user = req.body
-    user.avatar = req.file.path
+
+    if ( req.file) {
+        user.avatar = req.file.path
+    } else {
+      user.avatar = "https://pbs.twimg.com/media/E9AHSreXoAMEdAf.jpg"  
+    }
 
     function renderWithErrors(errors) {
         res.status(400).render("auth/register", {
@@ -60,7 +65,7 @@ module.exports.doLogin = (req, res, next) => {
                     .then(match => {
                         if (match) {
                             req.session.userId = user.id
-                            res.redirect("/furanchos")
+                            res.redirect(`/${user.id}/profile`)
                         } else {
                             renderInvalidLogin()
                         }
@@ -68,4 +73,9 @@ module.exports.doLogin = (req, res, next) => {
             }
         })
         .catch(error => next(error))
+}
+
+module.exports.detail = (req, res, next) => {
+    const user = req.params
+    res.render("auth/profile", { user })
 }

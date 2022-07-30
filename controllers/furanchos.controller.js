@@ -17,7 +17,11 @@ module.exports.create = (req, res, next) => {
 module.exports.doCreate = (req, res, next) => {
     const furancho = req.body
     
-    furancho.image = req.file.path
+    if ( req.file) {
+        furancho.image = req.file.path
+    } else {
+        furancho.image = "https://imagenes.20minutos.es/files/image_990_v3/uploads/imagenes/2022/05/04/cunca-vino.jpeg"  
+    }
 
     Furancho.create(furancho)
         .then(furancho => res.redirect("/furanchos"))
@@ -58,7 +62,11 @@ module.exports.update = (req, res, next) => {
 module.exports.doUpdate = (req, res, next) => {
         const furancho = req.body
 
-        furancho.image = req.file.path
+        if ( req.file) {
+            furancho.image = req.file.path
+        } else {
+            furancho.image = "https://imagenes.20minutos.es/files/image_990_v3/uploads/imagenes/2022/05/04/cunca-vino.jpeg"  
+        }
         
         Furancho.findByIdAndUpdate(req.params.id, furancho)
         .then((furancho) => {

@@ -46,7 +46,7 @@ const furanchoSchema = new Schema({
     },
     image: {
         type: String,
-        default: "https://imagenes.20minutos.es/files/image_990_v3/uploads/imagenes/2022/05/04/cunca-vino.jpeg",
+        /*default: "https://imagenes.20minutos.es/files/image_990_v3/uploads/imagenes/2022/05/04/cunca-vino.jpeg",
         validate: {
             validator: function (image) {
                 try {
@@ -57,7 +57,7 @@ const furanchoSchema = new Schema({
                 }
             },
             message: image => `Invalid URL`
-        },
+        },*/
     },
     accesibility: {
         type: Boolean,
