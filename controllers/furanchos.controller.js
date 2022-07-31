@@ -3,6 +3,22 @@ const { Furancho } = require("../models")
 const menus = require("../data/menus.json")
 
 module.exports.list = (req, res, next) => {
+
+    const { lat, lng } = req.query
+    const criterial = {}
+
+    if (lat && lng) {
+        criterial.location = {
+            $near: {
+              $geometry: {
+                type: "Point",
+                coordinates: [lng, lat]
+             },
+             $maxDistance: 50000
+           }
+         }
+    }
+
     Furancho.find()
         .then(furanchos => {
             res.render("furanchos/list", { furanchos })
@@ -15,12 +31,19 @@ module.exports.create = (req, res, next) => {
 }
 
 module.exports.doCreate = (req, res, next) => {
-    const furancho = req.body
+    const { furancho, lat, lng } = req.body
     
     if ( req.file) {
         furancho.image = req.file.path
     } else {
         furancho.image = "https://imagenes.20minutos.es/files/image_990_v3/uploads/imagenes/2022/05/04/cunca-vino.jpeg"  
+    }
+
+    if (lat && lng) {
+        furancho.location = {
+            type: "Point",
+            coordinates: [lng, lat]
+        }
     }
 
     Furancho.create(furancho)
@@ -68,7 +91,7 @@ module.exports.doUpdate = (req, res, next) => {
             furancho.image = "https://imagenes.20minutos.es/files/image_990_v3/uploads/imagenes/2022/05/04/cunca-vino.jpeg"  
         }
         
-        Furancho.findByIdAndUpdate(req.params.id, furancho, { runValidators: true })
+        Furancho.findByIdAndUpdate(req.params.id, furancho, { runValidators: true })
         .then((furancho) => {
                 res.redirect(`/furanchos/${furancho.id}/detail`)
         })

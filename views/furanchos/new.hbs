@@ -22,17 +22,12 @@
       <div class="input-group mb-2">
         <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
         <input name="address" value="{{furancho.address}}"
-          class="form-control {{#if errors.address}}is-invalid{{/if}}" placeholder="Enderezo">
+          class="form-control g-places-finder {{#if errors.address}}is-invalid{{/if}}" placeholder="Enderezo">
         {{#if errors.address}}<div class="invalid-feedback">{{errors.address}}</div>{{/if}}
       </div>
 
-      <div class="input-group mb-2">
-        <span class="input-group-text"><i class="fa fa-location-dot fa-fw"></i></span>
-        <input type="text" name="location" value="{{furancho.location}}"
-          class="form-control {{#if errors.location}}is-invalid{{/if}}"
-          placeholder="Coordenadas 42.264672416, -8.7806074005">
-        {{#if errors.location}}<div class="invalid-feedback">{{errors.location}}</div>{{/if}}
-      </div>
+      <input type="hidden" name="lat" value="{{furancho.lat}}" />
+      <input type="hidden" name="lng" value="{{furancho.lng}}" />
 
       <span>Accesibilidade:</span>
       <div class="input-group mb-2">
@@ -53,14 +48,16 @@
       </div>
 
       <span>Menú:</span>
-      <div class="input-group mb-2">
-        <span class="input-group-text"><i class="fa-solid fa-utensils fa-fw"></i></span>
-        <select name="menu" value="{{furancho.menu}}" class="form-control {{#if errors.menu}}is-invalid{{/if}}"
-          multiple>
-          {{#each menus as | menu |}}
-          <option value="{{menu}}">{{menu}}</option>
-          {{/each}}
-        </select>
+      <div name="menu" value="{{furancho.menu}}" class="input-group mb-3">
+        <span class="input-group-text mb-2"><i class="fa-solid fa-utensils fa-fw"></i></span>
+        {{#each menus as | menu |}}
+        <div class="form-check input-group">
+          <input name="menu" class="form-check-input" type="checkbox" value="{{menu}}">
+          <label class="form-check-label">
+            &nbsp; {{menu}}
+          </label>
+        </div>
+        {{/each}}
         {{#if errors.menu}}<div class="invalid-feedback">{{errors.menu}}</div>{{/if}}
       </div>
 
@@ -70,6 +67,13 @@
         <input type="date" name="openAt" value="{{furancho.openAt}}"
           class="form-control {{#if errors.openAt}}is-invalid{{/if}}">
         {{#if errors.openAt}}<div class="invalid-feedback">{{errors.openAt}}</div>{{/if}}
+      </div>
+
+      <div class="input-group mb-2">
+        <span class="input-group-text"><i class="fa fa-clock-o fa-fw"></i></span>
+        <input name="schedule" value="{{furancho.schedule}}"
+          class="form-control {{#if errors.schedule}}is-invalid{{/if}}" placeholder="Horario">
+        {{#if errors.schedule}}<div class="invalid-feedback">{{errors.schedule}}</div>{{/if}}
       </div>
 
       <div class="input-group mb-2">

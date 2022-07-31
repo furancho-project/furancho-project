@@ -16,7 +16,6 @@ const furanchoSchema = new Schema({
         type: String,
         required: "O furancho ten que ter enderezo, ou?",
         minLength: [3, "Ten que ter polo menos 3 caracteres"],
-        maxLength: [50, "Excediches o número máximo de caracteres"]
     },
     phone: {
         type: String,
@@ -38,27 +37,15 @@ const furanchoSchema = new Schema({
         type: {
             type: String,
             enum: ["Point"],
-            //required: true
+            required: true
         },
         coordinates: {
             type: [Number],
-            //required: true,
+            required: true,
         }
     },
     image: {
         type: String,
-        /*default: "https://imagenes.20minutos.es/files/image_990_v3/uploads/imagenes/2022/05/04/cunca-vino.jpeg",
-        validate: {
-            validator: function (image) {
-                try {
-                    new URL(image);
-                    return true;
-                } catch (error) {
-                    return false;
-                }
-            },
-            message: image => `Invalid URL`
-        },*/
     },
     accesibility: {
         type: Boolean,
