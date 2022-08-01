@@ -31,7 +31,8 @@ module.exports.create = (req, res, next) => {
 }
 
 module.exports.doCreate = (req, res, next) => {
-    const { furancho, lat, lng } = req.body
+    const { lat, lng } = req.body
+    const furancho = req.body
     
     if ( req.file) {
         furancho.image = req.file.path

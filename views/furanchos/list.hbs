@@ -1,21 +1,31 @@
 <h2>Listado de furanchos</h2>
 
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d751794.8107737575!2d-8.30612551328126!3d42.60414041059326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2ses!4v1659370238176!5m2!1ses!2ses" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+<h2>Listado de furanchos</h2>
 <div class="row">
     {{#each furanchos as |furancho|}}
         <div class="col-3">
-            <div class="card mb-4">
+            <div class="card mb-3">
                 <img src="{{furancho.image}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">{{furancho.name}}</h5>
-                    <p class="card-text"><b>Dirección:</b><br>{{furancho.address}}</p>
-                    <p class="card-text"><b>Teléfono:</b><br>{{furancho.phone}}</p>
-                    <p class="card-text"><b>Apertura:</b><br>{{prettyDate furancho.openAt}}</p>
-                    <p class="card-text"><b>Peche:</b><br>{{closingDate furancho.openAt}}</p>
-                    <p class="card-text"><b>Ubicación:</b><br>{{furancho.address}}</p>
-                    <p class="card-text"><b>Accesibilidade:</b><br>{{#if furancho.accesibility}}Si{{else}}No{{/if}}</p>
-                    <p class="card-text"><b>Zona Exterior:</b><br>{{#if furancho.terrace}}Si{{else}}No{{/if}}</p>
-                    <p class="card-text"><b>Menú:</b><br>{{furancho.menu}}</p>
-                    <p class="card-text"><b>Horario:</b><br>{{furancho.schedule}}</p>
+                    <h4 class="card-title">{{furancho.name}}</h4>
+                        <h4>
+                            {{#if furancho.accesibility}}<i class="fa-solid fa-wheelchair-move icon"></i>{{else}}{{/if}} &nbsp;
+                            {{#if furancho.menu}}<i class="fa-solid fa-utensils icon"></i>{{else}}{{/if}} &nbsp;
+                            {{#if furancho.terrace}}<i class="fa-solid fa-tree icon"></i>{{else}}{{/if}}</p>
+                        </h4>
+                    <p class="card-text"><b>Enderezo:</b><br>{{furancho.address}}</p>
+                    <div class="container p-0">
+                        <div class="d-flex justify-content-evenly">
+                            <div class="col-6">
+                                <p><b>Apertura:</b><br>{{prettyDate furancho.openAt}}</p>
+                            </div>
+                            <div class="col-6">
+                                <p><b>Peche:</b><br>{{closingDate furancho.openAt}}</p>
+                            </div>
+                        </div>
+                    </div>
                     <a href="/furanchos/{{furancho.id}}/detail" class="btn btn-primary">Ver detalles</a>
                 </div>
             </div>
