@@ -4,7 +4,7 @@ const MongoStore = require('connect-mongo')
 const mongoose = require('mongoose')
 
 const session = expressSession({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || "secret",
     resave: false,
     saveUninitialized: false,
     name: 'session cookie',

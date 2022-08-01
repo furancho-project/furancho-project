@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router(); 
 const upload = require("./multer.config")
+const secure = require("../middlewares/secure.mid");
 
 const { furanchos, auth } = require("../controllers");
 

@@ -37,7 +37,7 @@ module.exports.doCreate = (req, res, next) => {
     if ( req.file) {
         furancho.image = req.file.path
     } else {
-        furancho.image = "https://imagenes.20minutos.es/files/image_990_v3/uploads/imagenes/2022/05/04/cunca-vino.jpeg"  
+        furancho.image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1659368114/furancho-project/dndjlveqfdz3zwid4syn.jpg" 
     }
 
     if (lat && lng) {

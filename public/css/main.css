@@ -4,3 +4,6 @@
 .fa-wheelchair-move.icon, .fa-utensils.icon, .fa-tree.icon {
     color:#c60053;
 }
+.card-img-top {
+    height: 200px;
+}
