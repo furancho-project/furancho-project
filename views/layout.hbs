@@ -14,13 +14,15 @@
     />
     <script src="https://kit.fontawesome.com/8218b38a96.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/navbar.css" />
 </head>
 
 <body>
     {{> navbar }}
-    <div class="container pt-5">
+    <div class="container mt-5">
         {{{body}}}
     </div>
+    {{> footer}}
     <script src="/js/g-places.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{googleApiKey}}&libraries=places&callback=initGooglePlaces">
     </script> 

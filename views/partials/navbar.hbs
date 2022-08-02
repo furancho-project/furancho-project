@@ -1,35 +1,40 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg pink-navbar">
   <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="https://res.cloudinary.com/dyl3cklgp/image/upload/v1659438262/furancho-project/ilao2z4tbiho4whdhpri.png" alt="navar-icon" class="navar-icon" width="50" height="40">
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/furanchos">Furanchos</a>
+          <a class="nav-link active nav-text" aria-current="page" href="/furanchos">Furanchos</a>
+        </li>
+        {{#if currentUser}}
+        <li class="nav-item">
+          <a class="nav-link active nav-text" aria-current="page" href="/furanchos/new">Engadir furancho</a>
+        </li>
+        {{else}}
+        {{/if}}
+        <li class="nav-item">
+          <a class="nav-link active nav-text" aria-current="page" href="#">Que é un furancho?</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/furanchos/new">Engadir furancho</a>
+          <a class="nav-link active nav-text" aria-current="page" href="#">Quen somos?</a>
+        </li>
+         {{#if currentUser}}
+        <li class="nav-item">
+          <a class="nav-link active nav-text" aria-current="page" href="/{{currentUser.id}}/profile">Ver perfil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Que é un furancho?</a>
+          <a class="nav-link active nav-text" aria-current="page" href="/login">Pechar sesión</a>
         </li>
+        {{else}}
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Quen somos?</a>
+          <a class="nav-link active nav-text" aria-current="page" href="/login">Iniciar sesión</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/register">Rexístrate!</a>
-        </li><li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/login">Accede</a>
-        </li>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Perfil</a></li>
-            <li><a class="dropdown-item" href="#">Favoritos</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Pechar sesión</a></li>
-          </ul>
-        </li>
+        {{/if}}
       </ul>
     </div>
   </div>

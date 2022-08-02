@@ -1,19 +1,32 @@
-<h2>Listado de furanchos</h2>
+<h2>{{#if currentUser}}Ola {{currentUser.name}}!{{else}}{{/if}}</h2>
+<div class=" d-flex">
+    <div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d751794.8107737575!2d-8.30612551328126!3d42.60414041059326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2ses!4v1659370238176!5m2!1ses!2ses" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div>
+       <select class="form-select" aria-label="Default select example">
+        <option selected>Abertos agora mesmo </option>
+        <option value="1">Concello</option>
+        <option value="1">Con terraza exterior</option>
+        <option value="1">Concello</option>
+        
+</select>
+    </div>
+</div>
+<br>
+<br>
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d751794.8107737575!2d-8.30612551328126!3d42.60414041059326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2ses!4v1659370238176!5m2!1ses!2ses" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-<h2>Listado de furanchos</h2>
 <div class="row">
     {{#each furanchos as |furancho|}}
-        <div class="col-3">
+        <div class="col-4">
             <div class="card mb-3">
                 <img src="{{furancho.image}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h4 class="card-title">{{furancho.name}}</h4>
                         <h4>
-                            {{#if furancho.accesibility}}<i class="fa-solid fa-wheelchair-move icon"></i>{{else}}{{/if}} &nbsp;
-                            {{#if furancho.menu}}<i class="fa-solid fa-utensils icon"></i>{{else}}{{/if}} &nbsp;
-                            {{#if furancho.terrace}}<i class="fa-solid fa-tree icon"></i>{{else}}{{/if}}</p>
+                            {{#if furancho.accesibility}}<i class="fa-solid fa-wheelchair-move icon">&nbsp;</i>{{else}}{{/if}} 
+                            {{#if furancho.menu}}<i class="fa-solid fa-utensils icon">&nbsp;</i>{{else}}{{/if}} 
+                            {{#if furancho.terrace}}<i class="fa-solid fa-tree icon">&nbsp;</i>{{else}}&nbsp;{{/if}}</p> 
                         </h4>
                     <p class="card-text"><b>Enderezo:</b><br>{{furancho.address}}</p>
                     <div class="container p-0">
@@ -26,7 +39,9 @@
                             </div>
                         </div>
                     </div>
-                    <a href="/furanchos/{{furancho.id}}/detail" class="btn btn-primary">Ver detalles</a>
+                    <div class="d-grid col-6 mt-3">
+                    <a href="/furanchos/{{furancho.id}}/detail" class="btn btn-success">Ver furancho</a>
+                    </div>
                 </div>
             </div>
         </div>
