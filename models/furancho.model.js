@@ -37,7 +37,7 @@ const furanchoSchema = new Schema({
         type: {
             type: String,
             enum: ["Point"],
-            required: true
+            required: true //dame erro
         },
         coordinates: {
             type: [Number],
