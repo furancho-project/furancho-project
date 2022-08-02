@@ -31,7 +31,7 @@ module.exports.doRegister = (req, res, next) => {
             } else {
                 const user = req.body
                 return User.create(user)
-                    .then(user => res.redirect("/furanchos"))
+                    .then(user => res.redirect("/login"))
             }
         })
         .catch(error => {

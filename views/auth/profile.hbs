@@ -4,12 +4,12 @@
         <form action="/register" method="post" enctype="multipart/form-data">
 
 
-            <div class="detail row">
-                <img src="{{user.avatar}}" class="col-3" alt="">
+            <div class="row">
+                <img class="avatar-profile" src="{{currentUser.avatar}}" class="col-3" alt="">
                 <div class="info col-6">
-                    <h1><b>{{user.name}}</b></h1><a href="">Editar</a>
-                    <h3><b>email: {{user.email}}</b></h3>
-                    <h1>Listado de favoritos:</h1>
+                    <h1><b>{{currentUser.name}}</b></h1><a href="">Editar</a>
+                    <p><b>{{currentUser.email}}</b></p>
+                    <p>Listado de favoritos:</p>
 
                 </div>
             </div>
@@ -18,8 +18,8 @@
 
 
         </form>
-        <hr>
-        <div class="d-grid">
+        
+        <div class="d-grid mb-3">
             <a class="btn btn-secondary" href="/update">Editar perfil</a>
         </div>
         <form action="/{{user.id}}/delete" method="POST">
@@ -27,3 +27,7 @@
         </form>
     </div>
 </div>
+
+
+<p>Os teus favoritos:</p>
+
