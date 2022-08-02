@@ -14,17 +14,18 @@
                 <p class="card-text"><b>Menú:</b><br>{{furancho.menu}}</p>
                 <p class="card-text"><b>Horario:</b><br>{{furancho.schedule}}</p>
                 
-                }
+                {{#if currentUser}}
                 <div class="d-grid">
                 <a href="/furanchos/{{furancho.id}}/update" class="btn btn-primary mb-3">Actualizar</a>
                 </div>
-
+                
                 <div class="d-grid">
                     <form onsubmit="onSubmit(event)" action="/furanchos/{{furancho.id}}/delete" method="POST">
                         <button type="submit" class="btn btn-danger">Eliminar furancho</button>
                     </form>
                 </div>
-                
+                {{else}}
+                {{/if}}
             </div>
         </div>
     </div>
