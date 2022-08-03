@@ -1,8 +1,7 @@
 function initGooglePlaces() {
-    console.log("Places loaded")
-    initPlacesSearchBar()
-    initGMap()
-
+    console.log("Places loaded");
+    initPlacesSearchBar();
+    initGMap();
 }
 
 function initGMap() {
@@ -31,14 +30,7 @@ function initGMap() {
  }
 }
 
-function drop() {
-    for (var i =0; i < markerArray.length; i++) {
-      setTimeout(function() {
-        addMarkerMethod();
-      }, i * 200);
-    }
-  }
-
+      
 function initPlacesSearchBar(){
     const input = document.querySelector(".g-places-finder");
     if (input) {
