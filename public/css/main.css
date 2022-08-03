@@ -1,3 +1,8 @@
+.g-map {
+    height: 400px;
+    width: 100%;
+}
+
 .background-detail {
     background-color: #C60053;
 }
