@@ -20,5 +20,7 @@ hbs.registerHelper("markers", function(furanchos, options) {
     }
         return markers
     }, [])
+
     return new hbs.SafeString(`<script>const gMarkers = ${JSON.stringify(markers)}</script>`);
 })
+
