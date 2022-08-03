@@ -1,53 +1,54 @@
 <h2>{{#if currentUser}}Ola {{currentUser.name}}!{{else}}{{/if}}</h2>
-    <div class="row my-3">
-        <div class="col-12">
-            <div class="g-map"></div>
-        </div>
+
+
+
+<div class="row my-3">
+    <div class="col-12">
+        {{markers furanchos}}
+        <div class="g-map"></div>
     </div>
+</div>
+
 <div class=" d-flex">
-
-
-    <div>
-       <select class="form-select" aria-label="Default select example">
+    <select class="form-select" aria-label="Default select example">
         <option selected>Abertos agora mesmo </option>
         <option value="1">Concello</option>
         <option value="1">Con terraza exterior</option>
         <option value="1">Concello</option>
-        
-</select>
-    </div>
+    </select>
+</div>
 </div>
 <br>
 <br>
 
 <div class="row">
     {{#each furanchos as |furancho|}}
-        <div class="col-4">
-            <div class="card mb-3">
-                <img src="{{furancho.image}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h4 class="card-title">{{furancho.name}}</h4>
-                        <h4>
-                            {{#if furancho.accesibility}}<i class="fa-solid fa-wheelchair-move icon">&nbsp;</i>{{else}}{{/if}} 
-                            {{#if furancho.menu}}<i class="fa-solid fa-utensils icon">&nbsp;</i>{{else}}{{/if}} 
-                            {{#if furancho.terrace}}<i class="fa-solid fa-tree icon">&nbsp;</i>{{else}}&nbsp;{{/if}}</p> 
-                        </h4>
-                    <p class="card-text"><b>Enderezo:</b><br>{{furancho.address}}</p>
-                    <div class="container p-0">
-                        <div class="d-flex justify-content-evenly">
-                            <div class="col-6">
-                                <p><b>Apertura:</b><br>{{prettyDate furancho.openAt}}</p>
-                            </div>
-                            <div class="col-6">
-                                <p><b>Peche:</b><br>{{closingDate furancho.openAt}}</p>
-                            </div>
+    <div class="col-4">
+        <div class="card mb-3">
+            <img src="{{furancho.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h4 class="card-title">{{furancho.name}}</h4>
+                <h4>
+                    {{#if furancho.accesibility}}<i class="fa-solid fa-wheelchair-move icon">&nbsp;</i>{{else}}{{/if}}
+                    {{#if furancho.menu}}<i class="fa-solid fa-utensils icon">&nbsp;</i>{{else}}{{/if}}
+                    {{#if furancho.terrace}}<i class="fa-solid fa-tree icon">&nbsp;</i>{{else}}&nbsp;{{/if}}</p>
+                </h4>
+                <p class="card-text"><b>Enderezo:</b><br>{{furancho.address}}</p>
+                <div class="container p-0">
+                    <div class="d-flex justify-content-evenly">
+                        <div class="col-6">
+                            <p><b>Apertura:</b><br>{{prettyDate furancho.openAt}}</p>
+                        </div>
+                        <div class="col-6">
+                            <p><b>Peche:</b><br>{{closingDate furancho.openAt}}</p>
                         </div>
                     </div>
-                    <div class="d-grid col-12 mt-3">
+                </div>
+                <div class="d-grid col-6 mt-3">
                     <a href="/furanchos/{{furancho.id}}/detail" class="btn btn-success">Ver furancho</a>
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
     {{/each}}
 </div>
