@@ -12,17 +12,32 @@ function initGMap() {
             const map = new google.maps.Map(mapContainer, {
                 zoom: 11.1,
                 center: center,
-              });  
-        }
+              }); 
+     
+       
+    if(gMarkers) {
+        gMarkers.forEach(({title, lng, lat}) => {
+            const image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1659549980/furancho-project/phjt37yct3qisi0kgzfx.png"
+            //const image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1659549424/furancho-project/lgxaybucqccltvuvcmwz.png"
+            const marker = new google.maps.Marker({
+                position: { lng, lat },
+                map: map,
+                icon: image,
+                title
+            })
+        })
+    }
 
-    const marker = new google.maps.Marker({
-        position: { lat: 42.32364841895046, lng: -8.741814014873759 },
-        map: map,
-        });
-    
-
+ }
 }
 
+function drop() {
+    for (var i =0; i < markerArray.length; i++) {
+      setTimeout(function() {
+        addMarkerMethod();
+      }, i * 200);
+    }
+  }
 
 function initPlacesSearchBar(){
     const input = document.querySelector(".g-places-finder");
