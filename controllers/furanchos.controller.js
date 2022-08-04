@@ -34,6 +34,7 @@ module.exports.doCreate = (req, res, next) => {
     const { lat, lng } = req.body
     console.log(lat,lng)
     const furancho = req.body
+    furancho.author = req.user.id
     
     if ( req.file) {
         furancho.image = req.file.path
@@ -62,6 +63,7 @@ module.exports.doCreate = (req, res, next) => {
 
 module.exports.detail = (req, res, next) => {
     Furancho.findById(req.params.id)
+        .populate("author")
         .then((furancho) => {
             if (furancho) {
                 res.render("furanchos/detail", { furancho })

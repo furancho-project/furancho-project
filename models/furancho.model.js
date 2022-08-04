@@ -37,11 +37,11 @@ const furanchoSchema = new Schema({
         type: {
             type: String,
             enum: ["Point"],
-            required: true //dame erro
+            //required: true //dame erro
         },
         coordinates: {
             type: [Number],
-            required: true,
+            //required: true,
         }
     },
     image: {
@@ -61,9 +61,10 @@ const furanchoSchema = new Schema({
         required: true
     },
     valid: false,
-    author: {
-        type: String,
-        //id: id
+    author:{
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: "User",
     },
     comments: {
         type: String,
@@ -72,7 +73,7 @@ const furanchoSchema = new Schema({
         type: String,
     }
 },
-//{timestamps: true}
+{timestamps: true}
 )
 
 furanchoSchema.pre('validate', function (next) {
