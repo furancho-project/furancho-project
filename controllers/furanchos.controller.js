@@ -88,6 +88,7 @@ module.exports.update = (req, res, next) => {
 
 module.exports.doUpdate = (req, res, next) => {
         const furancho = req.body
+        furancho.author = req.user.id
 
         if ( req.file) {
             furancho.image = req.file.path
