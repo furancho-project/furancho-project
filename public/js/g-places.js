@@ -3,33 +3,29 @@ function initGooglePlaces() {
     initPlacesSearchBar();
     initGMap();
 }
-
 function initGMap() {
-    const mapContainer = document.querySelector(".g-map");
-    if (mapContainer) {
-        const center = { lat: 42.4336, lng: -8.64805 }
-        const map = new google.maps.Map(mapContainer, {
-            zoom: 9,
-            center: center,
-        });
-
-        if (gMarkers) {
-            gMarkers.forEach(({ title, lng, lat }) => {
-                const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-                const marker = new google.maps.Marker({
-                    position: { lng, lat },
-                    map: map,
-                    title,
-                    icon: image
-                });
-
-            });
-        }
+    const mapContainer = document.querySelector(".g-map")
+        if(mapContainer) {
+            const center = { lat: 42.32364841895046, lng: -8.741814014873759 }
+            const map = new google.maps.Map(mapContainer, {
+                zoom: 11.1,
+                center: center,
+              });
+    if(gMarkers) {
+        gMarkers.forEach(({title, lng, lat}) => {
+            const image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1659549980/furancho-project/phjt37yct3qisi0kgzfx.png"
+            //const image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1659549424/furancho-project/lgxaybucqccltvuvcmwz.png"
+            const marker = new google.maps.Marker({
+                position: { lng, lat },
+                map: map,
+                icon: image,
+                title
+            })
+        })
     }
+ }
 }
-
-function initPlacesSearchBar() {
-
+function initPlacesSearchBar(){
     const input = document.querySelector(".g-places-finder");
     if (input) {
         const options = {
@@ -44,7 +40,6 @@ function initPlacesSearchBar() {
             const lat = place.geometry.location.lat();
             const lng = place.geometry.location.lng();
             console.log(place, lat, lng)
-
             document.querySelector("[name='lat']").value = lat;
             document.querySelector("[name='lng']").value = lng;
         });
