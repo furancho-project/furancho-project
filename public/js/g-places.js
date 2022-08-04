@@ -11,9 +11,9 @@ function initGMap() {
             const map = new google.maps.Map(mapContainer, {
                 zoom: 11.1,
                 center: center,
-              }); 
-     
-       
+
+              });     
+
     if(gMarkers) {
         gMarkers.forEach(({title, lng, lat}) => {
             const image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1659549980/furancho-project/phjt37yct3qisi0kgzfx.png"
@@ -29,8 +29,8 @@ function initGMap() {
 
  }
 }
-
-      
+   
+   
 function initPlacesSearchBar(){
     const input = document.querySelector(".g-places-finder");
     if (input) {
@@ -46,7 +46,7 @@ function initPlacesSearchBar(){
             const lat = place.geometry.location.lat();
             const lng = place.geometry.location.lng();
             console.log(place, lat, lng)
-    
+            
             document.querySelector("[name='lat']").value = lat;
             document.querySelector("[name='lng']").value = lng;
         });
