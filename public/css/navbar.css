@@ -7,3 +7,8 @@
     color:white !important;
 }
 
+.navbar-avatar-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}

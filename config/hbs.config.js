@@ -12,6 +12,8 @@ hbs.registerHelper("closingDate", (date) => {
     return closeDate.toLocaleDateString();
 });
 
+
+
 hbs.registerHelper("markers", function(furanchos, options) {
     const markers = furanchos.reduce((markers, furancho) => {
     if(furancho.location?.coordinates) {
