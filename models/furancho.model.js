@@ -66,15 +66,18 @@ const furanchoSchema = new Schema({
         required: true,
         ref: "User",
     },
-    comments: {
-        type: String,
-    },
     ratings: {
         type: String,
     }
 },
 {timestamps: true}
 )
+
+furanchoSchema.virtual('comments', {
+    ref: 'Comment',
+    localField: '_id',
+    foreignField: 'furancho',
+  });
 
 furanchoSchema.pre('validate', function (next) {
     this.image = this.image || undefined;

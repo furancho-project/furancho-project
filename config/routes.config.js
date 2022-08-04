@@ -3,7 +3,7 @@ const router = express.Router();
 const upload = require("./multer.config")
 const secure = require("../middlewares/secure.mid");
 
-const { furanchos, auth } = require("../controllers");
+const { furanchos, auth, comment } = require("../controllers");
 
 router.get("/furanchos", furanchos.list);
 router.get("/furanchos/new", secure.isAuthenticated, furanchos.create);
@@ -20,5 +20,7 @@ router.get("/login", auth.login);
 router.post("/login", auth.doLogin);
 
 router.get("/:id/profile", secure.isAuthenticated, auth.detail);
+
+router.post("/furanchos/:id/detail", comment.doCreate);
 
 module.exports = router;

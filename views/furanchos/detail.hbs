@@ -1,42 +1,43 @@
 <div class="card mb-3" style="max-width: 1000px;">
-  <div class="row g-0">
-    <div class="col-md-4">
+    <div class="row g-0">
+        <div class="col-md-4">
             <img src="{{furancho.image}}" class="card-img-top" alt="...">
-    </div>
-    <div class="col-md-8">
-        <div class="card-body">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
                 <h3 class="card-title">{{furancho.name}}</h3>
                 <p class="card-text"><b>Dirección:</b><br>{{furancho.address}}</p>
                 <p class="card-text">{{furancho.location}}</p>
                 <p class="card-text"><b>Teléfono:</b><br>{{furancho.phone}}</p>
                 <div class="d-flex justify-content-evenly">
-                            <div class="col-6">
-                                <p><b>Apertura:</b><br>{{prettyDate furancho.openAt}}</p>
-                            </div>
-                            <div class="col-6">
-                                <p><b>Peche:</b><br>{{closingDate furancho.openAt}}</p>
-                            </div>
+                    <div class="col-6">
+                        <p><b>Apertura:</b><br>{{prettyDate furancho.openAt}}</p>
+                    </div>
+                    <div class="col-6">
+                        <p><b>Peche:</b><br>{{closingDate furancho.openAt}}</p>
+                    </div>
                 </div>
-                
+
                 <div class="d-flex justify-content-evenly">
                     <div class="col-6">
-                        <p class="card-text"><b>Accesibilidade:</b><br>{{#if furancho.accesibility}}Si{{else}}No{{/if}}</p>
+                        <p class="card-text"><b>Accesibilidade:</b><br>{{#if furancho.accesibility}}Si{{else}}No{{/if}}
+                        </p>
                     </div>
                     <div class="col-6 mb-3">
                         <p class="card-text"><b>Zona Exterior:</b><br>{{#if furancho.terrace}}Si{{else}}No{{/if}}</p>
                     </div>
                 </div>
-                
+
                 <p class="card-text"><b>Menú:</b><br>{{furancho.menu}}</p>
                 <p class="card-text"><b>Horario:</b><br>{{furancho.schedule}}</p>
 
-                <p><i>Furancho creado por {{furancho.author.name}} o {{prettyDate furancho.timestamp}}</i></p>
-                
+                <p><i>Furancho creado por {{furancho.author.name}} o {{prettyDate furancho.createdAt}}</i></p>
+
                 {{#if currentUser}}
                 <div class="d-grid">
-                <a href="/furanchos/{{furancho.id}}/update" class="btn btn-primary mb-3">Actualizar</a>
+                    <a href="/furanchos/{{furancho.id}}/update" class="btn btn-primary mb-3">Actualizar</a>
                 </div>
-                
+
                 <div class="d-grid">
                     <form onsubmit="onSubmit(event)" action="/furanchos/{{furancho.id}}/delete" method="POST">
                         <button type="submit" class="btn btn-danger">Eliminar furancho</button>
@@ -45,22 +46,32 @@
                 {{else}}
                 {{/if}}
             </div>
-            </div>
         </div>
     </div>
-    <form action="/furanchos/new" method="POST" enctype="multipart/form-data"></form>
+</div>
 
+<form action="/furanchos/{{furancho.id}}/detail" method="POST">
+    <label for="floatingTextarea">Comentario</label>
     <div class="form-floating">
-        <textarea name="comments" class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-        <label for="floatingTextarea">Comments</label>
+        <textarea name="content" class="form-control {{#if errors.content}}is-invalid{{/if}}" placeholder="Deixa o teu comentario"></textarea>
+        {{#if errors.content}}<div class="invalid-feedback">{{errors.content}}</div>{{/if}}
     </div>
-    
+          <div class="d-grid">
+        <button type="submit" class="btn btn-success">Listo!</button>
+      </div>
+</form>
+
+<div>{{#each furancho.comments as |comment|}}
+    <ul>
+    <li>{{comment.author.name}}:{{comment.content}}</li>
+    </ul>
+    {{/each}}
 </div>
 
 <script>
-function onSubmit(event) {
-    if (!confirm('Seguro que queres borrar o furancho?')) {
-        event.preventDefault()
+    function onSubmit(event) {
+        if (!confirm('Seguro que queres borrar o furancho?')) {
+            event.preventDefault()
+        }
     }
-}
 </script>

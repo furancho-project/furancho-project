@@ -64,6 +64,10 @@ module.exports.doCreate = (req, res, next) => {
 module.exports.detail = (req, res, next) => {
     Furancho.findById(req.params.id)
         .populate("author")
+        .populate({
+            path: "comments",
+            populate: { path: "author" }
+        })
         .then((furancho) => {
             if (furancho) {
                 res.render("furanchos/detail", { furancho })
