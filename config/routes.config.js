@@ -19,8 +19,13 @@ router.post("/register", upload.single('avatar'), auth.doRegister)
 router.get("/login", auth.login);
 router.post("/login", auth.doLogin);
 
+
+
 router.get("/:id/profile", secure.isAuthenticated, auth.detail);
 
-router.post("/furanchos/:id/detail", comment.doCreate);
+router.post("/furanchos/:id/detail", secure.isAuthenticated, comment.doCreate);
+
+
+router.get("/logout", secure.isAuthenticated, auth.logOut)
 
 module.exports = router;

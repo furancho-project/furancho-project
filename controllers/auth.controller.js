@@ -79,3 +79,10 @@ module.exports.detail = (req, res, next) => {
     const user = req.params
     res.render("auth/profile", { user })
 }
+
+module.exports.logOut = (req, res, next) => {
+    if (req.session) {
+        req.session.destroy();
+        res.redirect("/login");
+    }
+}
