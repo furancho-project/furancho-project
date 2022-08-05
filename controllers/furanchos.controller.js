@@ -4,6 +4,7 @@ const menus = require("../data/menus.json")
 
 module.exports.list = (req, res, next) => {
 
+    const { id } = req.params
     const { lat, lng } = req.query
     const criterial = {}
 
@@ -19,7 +20,7 @@ module.exports.list = (req, res, next) => {
          }
     }
 
-    Furancho.find()
+    Furancho.find({accesibility:false})
         .then(furanchos => {
             res.render("furanchos/list", { furanchos })
         })

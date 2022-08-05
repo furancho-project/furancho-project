@@ -7,8 +7,12 @@
             <div class="card-body">
                 <h3 class="card-title">{{furancho.name}}</h3>
                 <p class="card-text"><b>Dirección:</b><br>{{furancho.address}}</p>
-                <p class="card-text">{{furancho.location}}</p>
+                
+                {{#if furancho.phone}}
                 <p class="card-text"><b>Teléfono:</b><br>{{furancho.phone}}</p>
+                {{else}}
+                {{/if}}
+
                 <div class="d-flex justify-content-evenly">
                     <div class="col-6">
                         <p><b>Apertura:</b><br>{{prettyDate furancho.openAt}}</p>
@@ -17,6 +21,7 @@
                         <p><b>Peche:</b><br>{{closingDate furancho.openAt}}</p>
                     </div>
                 </div>
+                
 
                 <div class="d-flex justify-content-evenly">
                     <div class="col-6">

@@ -1,5 +1,16 @@
 <h2>{{#if currentUser}}Ola {{currentUser.name}}!{{else}}{{/if}}</h2>
 
+
+<div class="input-group">
+    <span class="input-group-text"><i class="fa fa-globe"></i></span>
+    <input type="text" name="address" value="{{ query.address }}" class="form-control g-places-finder" placeholder="Enter address...">
+    <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
+</div>
+
+    <input type="hidden" name="lat" value="{{ query.lat }}" />
+    <input type="hidden" name="lng" value="{{ query.lng }}" />
+</form>
+
 <div class="row my-3">
     <div class="col-12">
         {{markers furanchos}}
