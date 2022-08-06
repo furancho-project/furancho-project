@@ -4,7 +4,7 @@ const menus = require("../data/menus.json")
 
 module.exports.list = (req, res, next) => {
 
-    const { lat, lng, terrace, accesibility, open } = req.query
+    const { lat, lng, terrace, accesibility, opened } = req.query
     const criterial = {}
 
     if (lat && lng) {
@@ -19,11 +19,12 @@ module.exports.list = (req, res, next) => {
          }
     }
 
-    if (open) {
+    if (opened) {
         const d = new Date()
         d.setMonth(d.getMonth() - 3)
         // d is now - 3m.
-        criterial.openAt = { $gte: d }
+        const closingDate = new Date()
+        criterial.openAt = { $gte: d, $lte: closingDate }
     }
 
     if (terrace) {
