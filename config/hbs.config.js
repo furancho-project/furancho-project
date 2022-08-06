@@ -4,6 +4,9 @@ hbs.registerPartials(__dirname + "/../views/partials");
 
 hbs.registerHelper("prettyDate", (date) => date?.toLocaleDateString());
 
+
+hbs.registerHelper("dateValue", (date) => date?.toLocaleDateString("en-CA"));
+
 hbs.registerHelper("closingDate", (date) => {
     const closeDate = new Date(date);
     

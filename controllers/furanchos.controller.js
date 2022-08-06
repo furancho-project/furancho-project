@@ -4,8 +4,7 @@ const menus = require("../data/menus.json")
 
 module.exports.list = (req, res, next) => {
 
-    const { id } = req.params
-    const { lat, lng } = req.query
+    const { lat, lng, terrace, accesibility, open } = req.query
     const criterial = {}
 
     if (lat && lng) {
@@ -20,9 +19,25 @@ module.exports.list = (req, res, next) => {
          }
     }
 
-    Furancho.find({accesibility:false})
+    if (open) {
+        const d = new Date()
+        d.setMonth(d.getMonth() - 3)
+        // d is now - 3m.
+        criterial.openAt = { $gte: d }
+    }
+
+    if (terrace) {
+        criterial.terrace = true
+    }
+
+    if (accesibility) {
+        criterial.accesibility = true
+    }
+
+
+    Furancho.find(criterial)
         .then(furanchos => {
-            res.render("furanchos/list", { furanchos })
+            res.render("furanchos/list", { furanchos, query: req.query })
         })
         .catch(error => next(error))
 }
