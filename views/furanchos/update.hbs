@@ -3,7 +3,7 @@
 
     <h2>Actualiza datos do furancho</h2>
 
-    <form action="/furanchos/{{furancho.id}}/update" method="POST" enctype="multipart/form-data">
+    <form action="/furanchos/{{furancho.id}}/update" method="POST">
 
       <div class="input-group mb-2">
         <span class="input-group-text"><i class="fa fa-wine-bottle fa-fw"></i></span>
@@ -28,14 +28,6 @@
 
       <input type="hidden" name="lat" value="{{furancho.lat}}" />
       <input type="hidden" name="lng" value="{{furancho.lng}}" />
-
-      {{!--<div class="input-group mb-2">
-        <span class="input-group-text"><i class="fa fa-location-dot fa-fw"></i></span>
-        <input type="text" name="location" value="{{furancho.location}}"
-          class="form-control {{#if errors.location}}is-invalid{{/if}}"
-          placeholder="Coordenadas 42.264672416, -8.7806074005">
-        {{#if errors.location}}<div class="invalid-feedback">{{errors.location}}</div>{{/if}}
-      </div>--}}
 
       <span>Accesibilidade:</span>
       <div class="input-group mb-2">

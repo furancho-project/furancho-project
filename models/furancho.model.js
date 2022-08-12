@@ -19,7 +19,6 @@ const furanchoSchema = new Schema({
     },
     phone: {
         type: String,
-        //required: "O furancho ten que ter teléfono, ou?",
         match: [PHONE_PATTERN,"Non é un número válido"],
         trim: true,
     },
@@ -28,7 +27,6 @@ const furanchoSchema = new Schema({
     },
     closeAt: { 
         type: Date,
-        //default: function() {this.openAt} utilizar moment.js
     },
     schedule: {
         type: String

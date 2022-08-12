@@ -22,7 +22,7 @@ module.exports.list = (req, res, next) => {
     if (opened) {
         const d = new Date()
         d.setMonth(d.getMonth() - 3)
-        // d is now - 3m.
+    
         const closingDate = new Date()
         criterial.openAt = { $gte: d, $lte: closingDate }
     }

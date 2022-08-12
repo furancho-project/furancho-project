@@ -32,18 +32,6 @@ const userSchema = new Schema(
         },
         avatar: {
             type: String,
-            /*default: "https://pbs.twimg.com/media/E9AHSreXoAMEdAf.jpg",
-            validate: {
-                validator: function (image) {
-                    try {
-                        new URL(image);
-                        return true;
-                    } catch (error) {
-                        return false;
-                    }
-                },
-                message: image => `Invalid URL`
-            },*/
         },
     }
 )

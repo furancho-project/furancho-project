@@ -56,7 +56,7 @@
 </div>
 
 <form action="/furanchos/{{furancho.id}}/detail" method="POST">
-    <label for="floatingTextarea">Comentario</label>
+    <label for="floatingTextarea">Deixa o teu comentario</label>
     <div class="form-floating">
         <textarea name="content" class="form-control {{#if errors.content}}is-invalid{{/if}}" placeholder="Deixa o teu comentario"></textarea>
         {{#if errors.content}}<div class="invalid-feedback">{{errors.content}}</div>{{/if}}
@@ -68,7 +68,7 @@
 
 <div>{{#each furancho.comments as |comment|}}
     <ul>
-    <li>{{comment.author.name}}:{{comment.content}}</li>
+    <li><i>Comentario de {{comment.author.name}} do {{prettyDate comment.createdAt}}</i><br>{{comment.content}}</li>
     </ul>
     {{/each}}
 </div>
