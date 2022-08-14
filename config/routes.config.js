@@ -22,5 +22,6 @@ router.post("/login", auth.doLogin);
 router.get("/logout", secure.isAuthenticated, auth.logOut)
 
 router.get("/:id/profile", secure.isAuthenticated, users.detail);
+router.get("/:id/update", secure.isAuthenticated, users.update)
 
 module.exports = router;

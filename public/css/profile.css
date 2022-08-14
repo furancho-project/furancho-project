@@ -1,0 +1,26 @@
+
+.favorites {
+    background-color: rgb(248, 249, 250);
+}
+
+.avatar-profile {
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+}
+
+.favorites>p {
+    text-align:center;
+    color: black;
+    margin-top: 3%;
+}
+
+.data {
+    padding: 3%;
+    background-color: 	rgb(248, 249, 250);
+    text-align:center;
+}
+
+.data-profile {
+    text-align:center;
+}

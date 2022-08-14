@@ -1,33 +1,60 @@
-<div class="row justify-content-center">
-    <div class="col-12 col-md-6 col-lg-4">
-        <h2>Perfil de {{currentUser.name}}</h2>
+<div class="d-flex justify-content-center">
+    <div class="flex-shrink-0">
         <form action="/register" method="post" enctype="multipart/form-data">
 
 
-            <div class="row">
+            <div class="data-profile">
                 <img class="avatar-profile" src="{{currentUser.avatar}}" class="col-3" alt="">
-                <div class="info col-6">
-                    <h1><b>{{currentUser.name}}</b></h1><a href="">Editar</a>
+                <div>
+                    <h1>{{currentUser.name}}</h1>
                     <p><b>{{currentUser.email}}</b></p>
-                    <p>Listado de favoritos:</p>
-
                 </div>
             </div>
 
-
-
-
         </form>
+
+       
         
-        <div class="d-grid mb-3">
-            <a class="btn btn-secondary" href="/update">Editar perfil</a>
+        <div class="d-grid mb-1">
+            <a class="btn btn-success" href="/{{currentUser.id}}/update">Editar perfil</a>
         </div>
-        <form action="/{{user.id}}/delete" method="POST">
-            <button type="submit" class="btn btn-danger">Borrar perfil</button>
+        <form action="/{{user.id}}/delete" method="POST" class="d-grid mb-3">
+            <button type="submit" class="btn btn-secondary">Borrar perfil</button>
         </form>
     </div>
+
+    <div class="flex-grow-1 ms-3 favorites">
+        <p>Os teus furanchos / favoritos</p> 
+        <div class="row">
+            {{#each furanchos as |furancho|}}
+            <div class="col-4">
+                <div class="card mb-3">
+                    <img src="{{furancho.image}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">{{furancho.name}}</h4>
+                        <h4>
+                            {{#if furancho.accesibility}}<i class="fa-solid fa-wheelchair-move icon">&nbsp;</i>{{else}}{{/if}}
+                            {{#if furancho.menu}}<i class="fa-solid fa-utensils icon">&nbsp;</i>{{else}}{{/if}}
+                            {{#if furancho.terrace}}<i class="fa-solid fa-tree icon">&nbsp;</i>{{else}}&nbsp;{{/if}}</p>
+                        </h4>
+                        <p class="card-text"><b>Enderezo:</b><br>{{furancho.address}}</p>
+                        <div class="container p-0">
+                            <div class="d-flex justify-content-evenly">
+                                <div class="col-6">
+                                    <p><b>Apertura:</b><br>{{prettyDate furancho.openAt}}</p>
+                                </div>
+                                <div class="col-6">
+                                    <p><b>Peche:</b><br>{{closingDate furancho.openAt}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <a href="/furanchos/{{furancho.id}}/detail" class="btn btn-success">Ver furancho</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
 </div>
-
-
-<p>Os teus favoritos:</p>
-
