@@ -3,7 +3,7 @@
 
     <h2>Engade un novo furancho</h2>
 
-    <form action="/furanchos/new" method="POST">
+    <form action="/furanchos/new" method="POST" enctype="multipart/form-data">
 
       <div class="input-group mb-2">
         <span class="input-group-text"><i class="fa fa-wine-bottle fa-fw"></i></span>
@@ -12,13 +12,27 @@
         {{#if errors.name}}<div class="invalid-feedback">{{errors.name}}</div>{{/if}}
       </div>
 
-      <div class="input-group mb-2">
-        <span class="input-group-text"><i class="fa fa-phone fa-fw"></i></span>
-        <input type="tel" name="phone" value="{{furancho.phone}}"
-          class="form-control {{#if errors.phone}}is-invalid{{/if}}" placeholder="Teléfono">
-        {{#if errors.phone}}<div class="invalid-feedback">{{errors.phone}}</div>{{/if}}
+      <div class="d-flex justify-content-evenly">
+        <div class="col-6"><span>Teléfono:</span></div>
+        <div class="col-6"><span>Imaxe do furancho:</span></div>
       </div>
 
+      <div class="d-flex justify-content-evenly">
+        <div class="input-group mb-2">
+          <span class="input-group-text"><i class="fa fa-phone fa-fw"></i></span>
+          <input type="tel" name="phone" value="{{furancho.phone}}"
+            class="form-control {{#if errors.phone}}is-invalid{{/if}}" placeholder="Teléfono">
+          {{#if errors.phone}}<div class="invalid-feedback">{{errors.phone}}</div>{{/if}}
+        </div>
+        <div class="input-group mb-2">
+          <span class="input-group-text"><i class="fa fa-picture-o fa-fw"></i></span>
+          <input type="file" name="image" value="{{ furancho.image }}"
+            class="form-control {{#if errors.image }}is-invalid{{/if}}" placeholder="Sube unha URL de imaxe" />
+          {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
+        </div>
+      </div>
+
+      <span>Enderezo:</span>
       <div class="input-group mb-2">
         <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
         <input name="address" value="{{furancho.address}}"
@@ -51,17 +65,17 @@
           </select>
         </div>
         <div class="input-group mb-2">
-        <span class="input-group-text"><i class="fa fa-calendar fa-fw"></i></span>
-        <input type="date" name="openAt" value="{{furancho.openAt}}"
-          class="form-control {{#if errors.openAt}}is-invalid{{/if}}">
-        {{#if errors.openAt}}<div class="invalid-feedback">{{errors.openAt}}</div>{{/if}}
+          <span class="input-group-text"><i class="fa fa-calendar fa-fw"></i></span>
+          <input type="date" name="openAt" value="{{furancho.openAt}}"
+            class="form-control {{#if errors.openAt}}is-invalid{{/if}}">
+          {{#if errors.openAt}}<div class="invalid-feedback">{{errors.openAt}}</div>{{/if}}
         </div>
-        
+
       </div>
 
 
       <span>Menú:</span>
-      <div name="menu" value="{{furancho.menu}}" class="input-group mb-3">
+      <div name="menu" value="{{furancho.menu}}" class="input-group mb-2">
         <span class="input-group-text mb-2"><i class="fa-solid fa-utensils fa-fw"></i></span>
         {{#each menus as | menu |}}
         <div class="form-check input-group">
@@ -73,20 +87,13 @@
         {{/each}}
         {{#if errors.menu}}<div class="invalid-feedback">{{errors.menu}}</div>{{/if}}
       </div>
-      
+
       <span>Horario:</span>
       <div class="input-group mb-2">
         <span class="input-group-text"><i class="fa fa-clock-o fa-fw"></i></span>
         <input name="schedule" value="{{furancho.schedule}}"
           class="form-control {{#if errors.schedule}}is-invalid{{/if}}" placeholder="Horario do furancho">
         {{#if errors.schedule}}<div class="invalid-feedback">{{errors.schedule}}</div>{{/if}}
-      </div>
-
-      <div class="input-group mb-2">
-        <span class="input-group-text"><i class="fa fa-picture-o fa-fw"></i></span>
-        <input type="file" name="image" value="{{ furancho.image }}"
-          class="form-control {{#if errors.image }}is-invalid{{/if}}" placeholder="Sube unha URL de imaxe" />
-        {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
       </div>
 
       <div class="d-grid">

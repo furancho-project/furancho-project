@@ -5,20 +5,34 @@
 
     <form action="/furanchos/{{furancho.id}}/update" method="POST">
 
-      <div class="input-group mb-2">
+ <div class="input-group mb-2">
         <span class="input-group-text"><i class="fa fa-wine-bottle fa-fw"></i></span>
         <input type="text" name="name" value="{{furancho.name}}"
           class="form-control {{#if errors.name}}is-invalid{{/if}}" placeholder="Nome do Furancho">
         {{#if errors.name}}<div class="invalid-feedback">{{errors.name}}</div>{{/if}}
       </div>
 
+      <div class="d-flex justify-content-evenly">
+        <div class="col-6"><span>Teléfono:</span></div>
+        <div class="col-6"><span>Imaxe do furancho:</span></div>
+      </div>
+
+    <div class="d-flex justify-content-evenly">
       <div class="input-group mb-2">
         <span class="input-group-text"><i class="fa fa-phone fa-fw"></i></span>
         <input type="tel" name="phone" value="{{furancho.phone}}"
           class="form-control {{#if errors.phone}}is-invalid{{/if}}" placeholder="Teléfono">
         {{#if errors.phone}}<div class="invalid-feedback">{{errors.phone}}</div>{{/if}}
       </div>
+      <div class="input-group mb-2">
+        <span class="input-group-text"><i class="fa fa-picture-o fa-fw"></i></span>
+        <input type="file" name="image" value="{{ furancho.image }}"
+          class="form-control {{#if errors.image }}is-invalid{{/if}}" placeholder="Sube unha URL de imaxe" />
+        {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
+      </div>
+    </div>
 
+<span>Enderezo:</span>
       <div class="input-group mb-2">
         <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
         <input name="address" value="{{furancho.address}}"
@@ -29,30 +43,44 @@
       <input type="hidden" name="lat" value="{{furancho.lat}}" />
       <input type="hidden" name="lng" value="{{furancho.lng}}" />
 
-      <span>Accesibilidade:</span>
-      <div class="input-group mb-2">
-        <span class="input-group-text"><i class="fa-brands fa-accessible-icon fa-fw"></i></span>
-        <select name="accesibility" value="{{furancho.accesibility}}" class="form-control">
-          <option value="true" selected>Si</option>
-          <option value="false">Non</option>
-        </select>
+      <div class="d-flex justify-content-evenly">
+        <div class="col-4"><span>Accesibilidade:</span></div>
+        <div class="col-4"><span>Zona exterior:</span></div>
+        <div class="col-4"><span>Data de apertura:</span></div>
       </div>
 
-      <span>Zona exterior:</span>
+      <div class="d-flex justify-content-evenly">
+        <div class="input-group mb-2">
+          <span class="input-group-text"><i class="fa-brands fa-accessible-icon fa-fw"></i></span>
+          <select name="accesibility" value="{{furancho.accesibility}}" class="form-control">
+            <option value="true" selected>Si</option>
+            <option value="false">Non</option>
+          </select>
+        </div>
+        <div class="input-group mb-2">
+          <span class="input-group-text"><i class="fa-solid fa-sun fa-fw"></i></span>
+          <select name="terrace" value="{{furancho.terrace}}" class="form-control">
+            <option value="true" selected>Si</option>
+            <option value="false">Non</option>
+          </select>
+        </div>
+        
       <div class="input-group mb-2">
-        <span class="input-group-text"><i class="fa-solid fa-sun fa-fw"></i></span>
-        <select name="terrace" value="{{furancho.terrace}}" class="form-control">
-          <option value="true" selected>Si</option>
-          <option value="false">Non</option>
-        </select>
+        <span class="input-group-text"><i class="fa fa-calendar fa-fw"></i></span>
+        <input type="date" name="openAt" value="{{dateValue furancho.openAt}}"
+          class="form-control {{#if errors.openAt}}is-invalid{{/if}}">
+        {{#if errors.openAt}}<div class="invalid-feedback">{{errors.openAt}}</div>{{/if}}
       </div>
+        
+      </div>
+
 
       <span>Menú:</span>
-      <div name="menu" value="{{furancho.menu}}" class="input-group mb-3">
+      <div name="menu" value="{{furancho.menu}}" class="input-group mb-2">
         <span class="input-group-text mb-2"><i class="fa-solid fa-utensils fa-fw"></i></span>
         {{#each menus as | menu |}}
         <div class="form-check input-group">
-          <input name="menu" class="form-check-input" type="checkbox">
+          <input name="menu" class="form-check-input" type="checkbox" value="{{menu}}">
           <label class="form-check-label">
             &nbsp; {{menu}}
           </label>
@@ -61,26 +89,12 @@
         {{#if errors.menu}}<div class="invalid-feedback">{{errors.menu}}</div>{{/if}}
       </div>
 
-      <span>Apertura:</span>
-      <div class="input-group mb-2">
-        <span class="input-group-text"><i class="fa fa-calendar fa-fw"></i></span>
-        <input type="date" name="openAt" value="{{dateValue furancho.openAt}}"
-          class="form-control {{#if errors.openAt}}is-invalid{{/if}}">
-        {{#if errors.openAt}}<div class="invalid-feedback">{{errors.openAt}}</div>{{/if}}
-      </div>
-
+      <span>Horario:</span>
       <div class="input-group mb-2">
         <span class="input-group-text"><i class="fa fa-clock-o fa-fw"></i></span>
         <input name="schedule" value="{{furancho.schedule}}"
-          class="form-control {{#if errors.schedule}}is-invalid{{/if}}" placeholder="Horario">
+          class="form-control {{#if errors.schedule}}is-invalid{{/if}}" placeholder="Horario do furancho">
         {{#if errors.schedule}}<div class="invalid-feedback">{{errors.schedule}}</div>{{/if}}
-      </div>
-
-      <div class="input-group mb-2">
-        <span class="input-group-text"><i class="fa fa-picture-o fa-fw"></i></span>
-        <input type="file" name="image" value="{{ furancho.image }}"
-          class="form-control {{#if errors.image }}is-invalid{{/if}}" placeholder="Sube unha URL de imaxe" />
-        {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
       </div>
 
       <div class="d-grid">
