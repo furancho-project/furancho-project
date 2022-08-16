@@ -1,11 +1,15 @@
 <h2>{{#if currentUser}}Ola {{currentUser.name}}!{{else}}{{/if}}</h2>
 
 
+<form action="/furanchos" method="GET">
 <div class="input-group">
+    <span class="input-group-text"><i class="fa fa-wine-bottle"></i></span>
+    <input type="text" name="name" value="{{ query.name }}" class="form-control" placeholder="Escribe o nome do furancho...">
     <span class="input-group-text"><i class="fa fa-globe"></i></span>
-    <input type="text" name="address" value="{{ query.address }}" class="form-control g-places-finder" placeholder="Enter address...">
+    <input type="text" name="address" value="{{ query.address }}" class="form-control g-places-finder" placeholder="Escribe o seu enderezo...">
     <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
 </div>
+</form>
 
     <input type="hidden" name="lat" value="{{ query.lat }}" />
     <input type="hidden" name="lng" value="{{ query.lng }}" />

@@ -12,11 +12,7 @@ const furanchoSchema = new Schema({
         maxLength: [30, "Excediches o número máximo de caracteres"],
         trim: true
     },
-    address: {
-        type: String,
-        required: "O furancho ten que ter enderezo, ou?",
-        minLength: [3, "Ten que ter polo menos 3 caracteres"],
-    },
+    
     phone: {
         type: String,
         match: [PHONE_PATTERN,"Non é un número válido"],
@@ -31,15 +27,20 @@ const furanchoSchema = new Schema({
     schedule: {
         type: String
     },
+    address: {
+        type: String,
+        required: "O furancho ten que ter enderezo, ou?",
+        minLength: [3, "Ten que ter polo menos 3 caracteres"],
+    },
     location: {
         type: {
             type: String,
-            enum: ["Point"],
-            //required: true //dame erro
+            enum: ["Point"]
+           
         },
         coordinates: {
-            type: [Number],
-            //required: true,
+            type: [Number]
+        
         }
     },
     image: {
@@ -81,6 +82,8 @@ furanchoSchema.pre('validate', function (next) {
     this.image = this.image || undefined;
     next();
 });
+
+furanchoSchema.index({ location: '2dsphere'})
 
 const Furancho = mongoose.model("Furancho", furanchoSchema);
 module.exports = Furancho;

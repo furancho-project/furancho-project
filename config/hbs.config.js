@@ -21,7 +21,7 @@ hbs.registerHelper("markers", function(furanchos, options) {
     const markers = furanchos.reduce((markers, furancho) => {
     if(furancho.location?.coordinates) {
         const [ lng, lat ] = furancho.location?.coordinates
-        markers.push({ lng, lat, title: furancho.name })
+        markers.push({ lng, lat, name: furancho.name, image: furancho.image, furanchoId: furancho.id })
     }
         return markers
     }, [])

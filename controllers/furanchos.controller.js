@@ -4,7 +4,7 @@ const menus = require("../data/menus.json")
 
 module.exports.list = (req, res, next) => {
 
-    const { lat, lng, terrace, accesibility, opened } = req.query
+    const { name, lat, lng, terrace, accesibility, opened } = req.query
     const criterial = {}
 
     if (lat && lng) {
@@ -14,9 +14,13 @@ module.exports.list = (req, res, next) => {
                 type: "Point",
                 coordinates: [lng, lat]
              },
-             $maxDistance: 50000
+             $maxDistance: 5
            }
          }
+    }
+
+    if(name) {
+        criterial.name = new Regexp(name, "i")
     }
 
     if (opened) {
@@ -49,7 +53,6 @@ module.exports.create = (req, res, next) => {
 
 module.exports.doCreate = (req, res, next) => {
     const { lat, lng } = req.body
-    console.log(lat,lng)
     const furancho = req.body
     furancho.author = req.user.id
     
