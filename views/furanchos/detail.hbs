@@ -7,7 +7,7 @@
             <div class="card-body">
                 <h3 class="card-title">{{furancho.name}}</h3>
                 <p class="card-text"><b>Dirección:</b><br>{{furancho.address}}</p>
-                
+
                 {{#if furancho.phone}}
                 <p class="card-text"><b>Teléfono:</b><br>{{furancho.phone}}</p>
                 {{else}}
@@ -21,7 +21,7 @@
                         <p><b>Peche:</b><br>{{closingDate furancho.openAt}}</p>
                     </div>
                 </div>
-                
+
 
                 <div class="d-flex justify-content-evenly">
                     <div class="col-6">
@@ -48,8 +48,15 @@
                         <button type="submit" class="btn btn-danger">Eliminar furancho</button>
                     </form>
                 </div>
-                {{else}}
                 {{/if}}
+
+                <form action="/furanchos/{{furancho.id}}/detail" method="POST">
+                    {{#favouriteFurancho currentUser furancho}}
+                    <button type="submit" class="btn btn-primary me-3">Favorito</button>
+                    {{else}}
+                    <button type="submit" class="btn btn-danger me-3">No favorito</button>
+                    {{/favouriteFurancho}}
+                </form>
             </div>
         </div>
     </div>
@@ -58,17 +65,18 @@
 <form action="/furanchos/{{furancho.id}}/detail" method="POST">
     <label for="floatingTextarea">Deixa o teu comentario</label>
     <div class="form-floating">
-        <textarea name="content" class="form-control {{#if errors.content}}is-invalid{{/if}}" placeholder="Deixa o teu comentario"></textarea>
+        <textarea name="content" class="form-control {{#if errors.content}}is-invalid{{/if}}"
+            placeholder="Deixa o teu comentario"></textarea>
         {{#if errors.content}}<div class="invalid-feedback">{{errors.content}}</div>{{/if}}
     </div>
-          <div class="d-grid">
+    <div class="d-grid">
         <button type="submit" class="btn btn-success">Listo!</button>
-      </div>
+    </div>
 </form>
 
 <div>{{#each furancho.comments as |comment|}}
     <ul>
-    <li><i>Comentario de {{comment.author.name}} do {{prettyDate comment.createdAt}}</i><br>{{comment.content}}</li>
+        <li><i>Comentario de {{comment.author.name}} do {{prettyDate comment.createdAt}}</i><br>{{comment.content}}</li>
     </ul>
     {{/each}}
 </div>

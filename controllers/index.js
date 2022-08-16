@@ -3,4 +3,5 @@ module.exports = {
     auth: require("./auth.controller"),
     comment: require("./comment.controller"),
     users: require("./users.controller"),
+    favourite: require("./favourite.controller"),
 }

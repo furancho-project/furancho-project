@@ -14,13 +14,13 @@ module.exports.list = (req, res, next) => {
                 type: "Point",
                 coordinates: [lng, lat]
              },
-             $maxDistance: 5
+             $maxDistance: 50000
            }
          }
     }
 
     if(name) {
-        criterial.name = new Regexp(name, "i")
+        criterial.name = new RegExp(name, "i")
     }
 
     if (opened) {

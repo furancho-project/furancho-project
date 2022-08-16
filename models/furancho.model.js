@@ -35,12 +35,11 @@ const furanchoSchema = new Schema({
     location: {
         type: {
             type: String,
-            enum: ["Point"]
-           
+            enum: ["Point"],  
         },
         coordinates: {
-            type: [Number]
-        
+            type: [Number],
+            index: "2dsphere",
         }
     },
     image: {
