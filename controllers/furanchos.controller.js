@@ -20,7 +20,7 @@ module.exports.list = (req, res, next) => {
     }
 
     if(name) {
-        criterial.name = new Regexp(name, "i")
+        criterial.name = new RegExp(name, "i")
     }
 
     if (opened) {
@@ -42,7 +42,7 @@ module.exports.list = (req, res, next) => {
 
     Furancho.find(criterial)
         .then(furanchos => {
-            res.render("furanchos/list", { furanchos, query: req.query })
+            res.render("furanchos/list2", { furanchos, query: req.query })
         })
         .catch(error => next(error))
 }
@@ -142,4 +142,3 @@ module.exports.delete = (req, res, next) => {
     })
     .catch((err) => next(err))
 }
-
