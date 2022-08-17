@@ -1,5 +1,4 @@
 const { mongoose } = require("mongoose")
-const { comment } = require(".")
 const { Comment } = require("../models")
 
 

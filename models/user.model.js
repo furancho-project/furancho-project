@@ -36,6 +36,12 @@ const userSchema = new Schema(
     }
 )
 
+userSchema.virtual("favourites", {
+    ref: "Favourite",
+    localField: "_id",
+    foreignField: "userId",
+  });
+
 userSchema.pre('validate', function (next) {
     this.avatar = this.avatar || undefined;
     next();
