@@ -1,4 +1,4 @@
-<h2 class="mb-3">{{#if currentUser}}Ola {{currentUser.name}}!{{else}}{{/if}}</h2>
+<h1 class="mb-3">{{#if currentUser}}Ola {{currentUser.name}}!{{else}}{{/if}}</h1>
 <div class="row">
     <div class="col-12">
         {{markers furanchos}}
@@ -9,8 +9,8 @@
 
 
 <form action="/furanchos" method="GET">
-    <div class="d-inline-flex" >
-        <div class="mb-4 d-flex flex-row justify-content-start">
+    <div class="d-inline-flex col-12" >
+        <div class="mb-4">
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="checkbox" name="opened" {{#if query.opened}} checked {{/if}}>
                 <label class="form-check-label">
@@ -31,17 +31,16 @@
             </div>
         </div>
 
-        <div class="d-flex flex-row justify-content-end">
+        <div class="d-inline-flex flex-row">
             <div>
-                <input type="text" name="name" value="{{ query.name }}" placeholder="Nome do furancho">
+                <input class="inputFuranchoName" type="text" name="name" value="{{ query.name }}" placeholder="Nome do furancho">
             </div>
             <div>
-              <select class="select" multiple data-mdb-placeholder="Example placeholder" multiple>
-                <option value="1">Bueu</option>
-                <option value="2">Cangas</option>
-                <option value="3">Marín</option>
-                <option value="4">Moaña</option>
-                <option value="5">Redondela</option>
+                <select name="city" value="{{furancho.city}}" class="form-select" multiple>
+                    <option value=""> Selecciona un concello</option>
+                    {{#each cities as |city| }}
+                    <option value="{{city}}">{{city}}</option>
+                    {{/each}}
                 </select>
             </div>
         </div>

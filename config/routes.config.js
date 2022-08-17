@@ -10,6 +10,8 @@ router.get("/furanchos/new", secure.isAuthenticated, furanchos.create);
 router.post("/furanchos/new", secure.isAuthenticated, upload.single('image'), furanchos.doCreate);
 router.get("/furanchos/:id/detail", furanchos.detail);
 router.get("/furanchos/:id/update", secure.isAuthenticated, furanchos.update);
+router.get("/furanchos/about", furanchos.about)
+router.get("/furanchos/aboutus", furanchos.aboutUs)
 router.post("/furanchos/:id/update", secure.isAuthenticated, upload.single('image'), furanchos.doUpdate);
 router.post("/furanchos/:id/delete", secure.isAuthenticated, furanchos.delete);
 
