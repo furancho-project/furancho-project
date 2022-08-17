@@ -14,7 +14,7 @@ module.exports.list = (req, res, next) => {
                 type: "Point",
                 coordinates: [lng, lat]
              },
-             $maxDistance: 50000
+             $maxDistance: 5
            }
          }
     }
@@ -42,7 +42,7 @@ module.exports.list = (req, res, next) => {
 
     Furancho.find(criterial)
         .then(furanchos => {
-            res.render("furanchos/list", { furanchos, query: req.query })
+            res.render("furanchos/list2", { furanchos, query: req.query })
         })
         .catch(error => next(error))
 }

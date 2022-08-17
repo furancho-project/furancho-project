@@ -1,8 +1,8 @@
-<h2>{{#if currentUser}}Ola {{currentUser.name}}!{{else}}{{/if}}</h2>
+<h2 class="mb-4">{{#if currentUser}}Ola {{currentUser.name}}!{{else}}{{/if}}</h2>
 
 
 <form action="/furanchos" method="GET">
-<div class="input-group">
+<div class="input-group mb-3">
     <span class="input-group-text"><i class="fa fa-wine-bottle"></i></span>
     <input type="text" name="name" value="{{ query.name }}" class="form-control" placeholder="Escribe o nome do furancho...">
     <span class="input-group-text"><i class="fa fa-globe"></i></span>
@@ -15,38 +15,39 @@
     <input type="hidden" name="lng" value="{{ query.lng }}" />
 </form>
 
+<form action="/furanchos" method="GET">
+    <div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="accesibility" {{#if query.accesibility}} checked{{/if}}>
+            <label class="form-check-label">
+                Accesibilidade
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="terrace" {{#if query.terrace}} checked {{/if}}>
+            <label class="form-check-label">
+                Zona exterior
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="opened" {{#if query.opened}} checked {{/if}}>
+            <label class="form-check-label">
+                Aberto hoxe
+            </label>
+        </div>
+        <button type="submit" class="btn btn-success">Listo!</button>
+
+
+    </div>
+</form>
+
+
 <div class="row my-3">
     <div class="col-12">
         {{markers furanchos}}
         <div class="g-map"></div>
     </div>
 </div>
-
-<form action="/furanchos" method="GET">
-<div class=" d-flex">
-    <div class="form-check">
-  <input class="form-check-input" type="checkbox" name="accesibility" {{#if query.accesibility}} checked{{/if}}>
-   <label class="form-check-label">
-    Accesibilidade
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" name="terrace" {{#if query.terrace}} checked {{/if}} >
-  <label class="form-check-label">
-    Zona exterior
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" name="opened" {{#if query.opened}} checked {{/if}} >
-  <label class="form-check-label">
-    Aberto hoxe
-  </label>
-</div>
-      <div class="d-grid">
-        <button type="submit" class="btn btn-success">Listo!</button>
-      </div>
-</div>
-</form>
 
 <br>
 <br>
