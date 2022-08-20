@@ -5,7 +5,7 @@ const cities = require("../data/cities.json")
 
 module.exports.list = (req, res, next) => {
 
-    const { name, lat, lng, terrace, accesibility, opened, city } = req.query
+    const { name, lat, lng, terrace, accesibility, opened } = req.query
     const criterial = {}
 
     if (lat && lng) {
@@ -15,7 +15,7 @@ module.exports.list = (req, res, next) => {
                 type: "Point",
                 coordinates: [lng, lat]
              },
-             $maxDistance: 5
+             $maxDistance: 25000
            }
          }
     }
@@ -44,6 +44,8 @@ module.exports.list = (req, res, next) => {
 
     Furancho.find(criterial)
         .then(furanchos => {
+            console.log(criterial)
+            console.log(req.query)
             res.render("furanchos/list2", { furanchos, cities, query: req.query })
         })
         .catch(error => next(error))
