@@ -1,20 +1,13 @@
 <div class="row justify-content-center">
     <div class="col-12 col-md-6 col-lg-4">
-        <h2>Actualiza o teu perfil</h2>
-        <form action="/register" method="post" enctype="multipart/form-data">
+        <h2>Edita o teu perfil</h2>
+        <form action="/{{user.id}}/edit" method="POST" enctype="multipart/form-data">
 
             <div class="input-group mb-1">
                 <span class="input-group-text"><i class="fa fa-user fa-fw"></i></span>
                 <input type="text" name="name" value="{{ user.name }}"
                     class="form-control {{#if errors.name }}is-invalid{{/if}}" placeholder="Nome de usuari@">
                 {{#if errors.name}}<div class="invalid-feedback">{{ errors.name }}</div>{{/if}}
-            </div>
-
-            <div class="input-group mb-1">
-                <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
-                <input type="text" name="email" value="{{ user.email }}"
-                    class="form-control {{#if errors.email }}is-invalid{{/if}}" placeholder="nome@exemplo.com">
-                {{#if errors.email}}<div class="invalid-feedback">{{ errors.email }}</div>{{/if}}
             </div>
 
             <div class="input-group mb-1">
@@ -32,7 +25,7 @@
             </div>
 
             <div class="d-grid">
-                <button class="btn btn-primary" type="submit">Actualiza!</button>
+                <button class="btn btn-primary" type="submit">Edita!</button>
             </div>
 
         </form>

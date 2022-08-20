@@ -1,8 +1,6 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 const menus = require("../data/menus.json")
-const cities = require("../data/cities.json")
-
 
 PHONE_PATTERN = /^(6|7|8|9)([0-9][ -]*){8}$/
 
@@ -14,7 +12,6 @@ const furanchoSchema = new Schema({
         maxLength: [30, "Excediches o número máximo de caracteres"],
         trim: true
     },
-    
     phone: {
         type: String,
         match: [PHONE_PATTERN,"Non é un número válido"],
@@ -33,13 +30,6 @@ const furanchoSchema = new Schema({
         type: String,
         required: "O furancho ten que ter enderezo, ou?",
         minLength: [3, "Ten que ter polo menos 3 caracteres"],
-    },
-    city: {
-        type: [{
-            type: String,
-            enum: cities,
-        }],
-        required: true,
     },
     location: {
         type: {
@@ -77,7 +67,7 @@ const furanchoSchema = new Schema({
     }
 },
 {timestamps: true}
-)
+);
 
 furanchoSchema.virtual('comments', {
     ref: 'Comment',

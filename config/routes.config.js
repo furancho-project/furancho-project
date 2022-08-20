@@ -24,9 +24,11 @@ router.post("/login", auth.doLogin);
 router.get("/logout", secure.isAuthenticated, auth.logOut);
 
 router.get("/:id/profile", secure.isAuthenticated, users.detail);
-router.get("/:id/profile", secure.isAuthenticated, favourite.list)
-router.get("/:id/update", secure.isAuthenticated, users.update);
+router.get("/:id/edit", secure.isAuthenticated, users.edit);
+router.post("/:id/edit", secure.isAuthenticated, upload.single('avatar'), users.doEdit); 
+router.post("/:id/delete", secure.isAuthenticated, users.delete);
 
 router.post("/furanchos/:id/favourite", secure.isAuthenticated, favourite.create);
+router.get("/:id/profile", secure.isAuthenticated, favourite.list);
 
 module.exports = router;

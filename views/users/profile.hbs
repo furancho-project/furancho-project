@@ -1,30 +1,25 @@
 <div class="d-flex justify-content-center">
     <div class="flex-shrink-0">
-        <form action="/register" method="post" enctype="multipart/form-data">
 
-
-            <div class="data-profile">
-                <img class="avatar-profile" src="{{currentUser.avatar}}" class="col-3" alt="">
-                <div>
-                    <h1>{{currentUser.name}}</h1>
-                    <p><b>{{currentUser.email}}</b></p>
-                </div>
+        <div class="data-profile">
+            <img class="avatar-profile" src="{{currentUser.avatar}}" class="col-3" alt="">
+            <div>
+                <h1>{{currentUser.name}}</h1>
+                <p><b>{{currentUser.email}}</b></p>
             </div>
-
-        </form>
-
-       
-        
-        <div class="d-grid mb-1">
-            <a class="btn btn-success" href="/{{currentUser.id}}/update">Editar perfil</a>
         </div>
-        <form action="/{{user.id}}/delete" method="POST" class="d-grid mb-3">
-            <button type="submit" class="btn btn-secondary">Borrar perfil</button>
+
+        <div class="d-grid mb-1">
+            <a class="btn btn-success" href="/{{currentUser.id}}/edit">Editar perfil</a>
+        </div>
+
+        <form onsubmit="onSubmit(event)" action="/{{user.id}}/delete" method="POST" class="d-grid mb-3">
+            <button type="submit" class="btn btn-danger">Borrar usuario</button>
         </form>
     </div>
 
     <div class="flex-grow-1 ms-3 favorites">
-        <p>Os teus furanchos / favoritos</p> 
+        <p><b>Os teus furanchos favoritos</b></p>
         <div class="row">
             {{#each user.favourites as |favourite| }}
             <div class="col-4">
@@ -33,9 +28,11 @@
                     <div class="card-body">
                         <h4 class="card-title">{{furanchoId.name}}</h4>
                         <h4>
-                            {{#if furanchoId.accesibility}}<i class="fa-solid fa-wheelchair-move icon">&nbsp;</i>{{else}}{{/if}}
+                            {{#if furanchoId.accesibility}}<i
+                                class="fa-solid fa-wheelchair-move icon">&nbsp;</i>{{else}}{{/if}}
                             {{#if furanchoId.menu}}<i class="fa-solid fa-utensils icon">&nbsp;</i>{{else}}{{/if}}
-                            {{#if ffuranchoId.terrace}}<i class="fa-solid fa-tree icon">&nbsp;</i>{{else}}&nbsp;{{/if}}</p>
+                            {{#if ffuranchoId.terrace}}<i class="fa-solid fa-tree icon">&nbsp;</i>{{else}}&nbsp;{{/if}}
+                            </p>
                         </h4>
                         <p class="card-text"><b>Enderezo:</b><br>{{furanchoId.address}}</p>
                         <div class="container p-0">
@@ -58,3 +55,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    function onSubmit(event) {
+        if (!confirm('Seguro que queres borrar o teu usuario?')) {
+            event.preventDefault()
+        }
+    }
+</script>

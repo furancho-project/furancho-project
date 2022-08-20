@@ -9,10 +9,10 @@ module.exports.register = (req, res, next) => {
 module.exports.doRegister = (req, res, next) => {
     const user = req.body
 
-    if ( req.file) {
+    if (req.file) {
         user.avatar = req.file.path
     } else {
-      user.avatar = "https://pbs.twimg.com/media/E9AHSreXoAMEdAf.jpg"  
+        user.avatar = "https://pbs.twimg.com/media/E9AHSreXoAMEdAf.jpg"  
     }
 
     function renderWithErrors(errors) {
