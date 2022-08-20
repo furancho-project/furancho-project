@@ -29,22 +29,22 @@
             {{#each user.favourites as |favourite| }}
             <div class="col-4">
                 <div class="card mb-3">
-                    <img src="{{favourite.image}}" class="card-img-top" alt="...">
+                    <img src="{{furanchoId.image}}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h4 class="card-title">{{favourite.name}}</h4>
+                        <h4 class="card-title">{{furanchoId.name}}</h4>
                         <h4>
-                            {{#if favourite.accesibility}}<i class="fa-solid fa-wheelchair-move icon">&nbsp;</i>{{else}}{{/if}}
-                            {{#if favourite.menu}}<i class="fa-solid fa-utensils icon">&nbsp;</i>{{else}}{{/if}}
-                            {{#if favourite.terrace}}<i class="fa-solid fa-tree icon">&nbsp;</i>{{else}}&nbsp;{{/if}}</p>
+                            {{#if furanchoId.accesibility}}<i class="fa-solid fa-wheelchair-move icon">&nbsp;</i>{{else}}{{/if}}
+                            {{#if furanchoId.menu}}<i class="fa-solid fa-utensils icon">&nbsp;</i>{{else}}{{/if}}
+                            {{#if ffuranchoId.terrace}}<i class="fa-solid fa-tree icon">&nbsp;</i>{{else}}&nbsp;{{/if}}</p>
                         </h4>
-                        <p class="card-text"><b>Enderezo:</b><br>{{favourite.address}}</p>
+                        <p class="card-text"><b>Enderezo:</b><br>{{furanchoId.address}}</p>
                         <div class="container p-0">
                             <div class="d-flex justify-content-evenly">
                                 <div class="col-6">
-                                    <p><b>Apertura:</b><br>{{prettyDate favourite.openAt}}</p>
+                                    <p><b>Apertura:</b><br>{{prettyDate furanchoId.openAt}}</p>
                                 </div>
                                 <div class="col-6">
-                                    <p><b>Peche:</b><br>{{closingDate favourite.openAt}}</p>
+                                    <p><b>Peche:</b><br>{{closingDate furanchoId.openAt}}</p>
                                 </div>
                             </div>
                         </div>

@@ -24,7 +24,7 @@ module.exports.doCreate = (req, res, next) => {
 
    
     Comment.create(comment)
-        .then(comment => res.redirect(`back`))
+        .then(comment => res.redirect("back"))
         .catch(error => {
             console.error(error)
             if (error instanceof mongoose.Error.ValidationError) {

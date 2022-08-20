@@ -1,21 +1,22 @@
 const { mongoose } = require("mongoose");
-const { Favourite } = require("../models");
+const { Favourite, Furancho } = require("../models");
 
 module.exports.create = (req, res, next) => {
   const likeIt = { userId: req.user.id, furanchoId: req.params.id };
+
   Favourite.findOne(likeIt)
     .then((favourite) => {
       if (!favourite) {
         Favourite.create(likeIt)
           .then((favourite) => {
-            res.redirect(`back`);
+            res.redirect("back");
           })
           .catch(next);
       } else {
         favourite
           .delete()
           .then(() => {
-            res.redirect(`back`);
+            res.redirect("back");
           })
           .catch(next);
       }
@@ -25,13 +26,13 @@ module.exports.create = (req, res, next) => {
 
 module.exports.list = (req, res, next) => {
 
-    User.findById(req.user.id)
+    Favourite.find()
         .populate({
             path: "favourites",
-            populate: { path: "furanchoId" }
+            populate: { path: "userId" }
         })
-        .then(user => {
-            res.render("users/profile", { user, furanchos })
+        .then(favourites => {
+            res.render("users/profile", { favourites, furanchos })
         })
         .catch(error => next(error))
 } 
