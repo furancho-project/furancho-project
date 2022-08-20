@@ -28,3 +28,13 @@
     padding-top: 3px;
     margin-top: 0;
 }
+
+.like {
+    border:none;
+    outline: none;
+
+}
+
+.register-btn {
+    background-color:#c60053 !important;
+}

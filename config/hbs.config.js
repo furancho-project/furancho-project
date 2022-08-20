@@ -34,4 +34,3 @@ hbs.registerHelper("favouriteFurancho", function(currentUser, furancho, options)
       return options.inverse(this);
     } 
 });
-
