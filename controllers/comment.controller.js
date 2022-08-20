@@ -22,8 +22,9 @@ module.exports.doCreate = (req, res, next) => {
     comment.author = req.user.id
     comment.furancho = req.params.id
 
+   
     Comment.create(comment)
-        .then(comment => res.redirect("/furanchos/detail"))
+        .then(comment => res.redirect(`back`))
         .catch(error => {
             console.error(error)
             if (error instanceof mongoose.Error.ValidationError) {
