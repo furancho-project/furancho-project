@@ -46,7 +46,7 @@ module.exports.list = (req, res, next) => {
         .then(furanchos => {
             console.log(criterial)
             console.log(req.query)
-            res.render("furanchos/list2", { furanchos, cities, query: req.query })
+            res.render("furanchos/list", { furanchos, cities, query: req.query })
         })
         .catch(error => next(error))
 }
