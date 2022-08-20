@@ -10,10 +10,12 @@ router.get("/furanchos/new", secure.isAuthenticated, furanchos.create);
 router.post("/furanchos/new", secure.isAuthenticated, upload.single('image'), furanchos.doCreate);
 router.get("/furanchos/:id/detail", furanchos.detail);
 router.get("/furanchos/:id/update", secure.isAuthenticated, furanchos.update);
+router.get("/furanchos/about", furanchos.about)
+router.get("/furanchos/aboutus", furanchos.aboutUs)
 router.post("/furanchos/:id/update", secure.isAuthenticated, upload.single('image'), furanchos.doUpdate);
 router.post("/furanchos/:id/delete", secure.isAuthenticated, furanchos.delete);
 
-router.post("/furanchos/:id/detail", secure.isAuthenticated, comment.doCreate);
+router.post("/furanchos/:id/comment", secure.isAuthenticated, comment.doCreate);
 
 router.get("/register", auth.register);
 router.post("/register", upload.single('avatar'), auth.doRegister);
@@ -22,8 +24,9 @@ router.post("/login", auth.doLogin);
 router.get("/logout", secure.isAuthenticated, auth.logOut);
 
 router.get("/:id/profile", secure.isAuthenticated, users.detail);
+router.get("/:id/profile", secure.isAuthenticated, favourite.list)
 router.get("/:id/update", secure.isAuthenticated, users.update);
 
-router.post("/furanchos/:id/detail", secure.isAuthenticated, favourite.create);
+router.post("/furanchos/:id/favourite", secure.isAuthenticated, favourite.create);
 
 module.exports = router;

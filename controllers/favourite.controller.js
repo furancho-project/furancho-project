@@ -8,14 +8,14 @@ module.exports.create = (req, res, next) => {
       if (!favourite) {
         Favourite.create(likeIt)
           .then((favourite) => {
-            res.render("furanchos/detail", { furancho });
+            res.redirect(`back`);
           })
           .catch(next);
       } else {
         favourite
           .delete()
           .then(() => {
-            res.redirect(`/furanchos/${furancho.id}/detail`);
+            res.redirect(`back`);
           })
           .catch(next);
       }
@@ -25,13 +25,13 @@ module.exports.create = (req, res, next) => {
 
 module.exports.list = (req, res, next) => {
 
-    Favourite.find()
+    User.findById(req.user.id)
         .populate({
             path: "favourites",
-            populate: { path: "userId" }
+            populate: { path: "furanchoId" }
         })
-        .then(favourites => {
-            res.render("users/profile", { favourites })
+        .then(user => {
+            res.render("users/profile", { user, furanchos })
         })
         .catch(error => next(error))
 } 

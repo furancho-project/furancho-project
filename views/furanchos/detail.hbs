@@ -1,11 +1,23 @@
-<div class="card mb-3" style="max-width: 1000px;">
-    <div class="row g-0">
+<div class="card mb-3">
+    <div class="row g-0 d-flex">
         <div class="col-md-4">
             <img src="{{furancho.image}}" class="card-img-top" alt="...">
         </div>
         <div class="col-md-8">
             <div class="card-body">
-                <h3 class="card-title">{{furancho.name}}</h3>
+                
+                {{#if currentUser}}
+                    <form action="/furanchos/{{furancho.id}}/favourite" method="POST">
+                    <h3 class="card-title" >{{furancho.name}} {{#favouriteFurancho currentUser furancho}}
+                    <button type="submit" class="like"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/640px-Heart_coraz%C3%B3n.svg.png" height ="50" width="50" /></button>
+                    {{else}}
+                    <button type="submit" class="like"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Heart_empty_font_awesome.svg/2048px-Heart_empty_font_awesome.svg.png" height ="50" width="50" /></button>
+                    {{/favouriteFurancho}}
+                    </form>
+                 {{else}}
+                <h3 class="card-title" >{{furancho.name}} 
+                 {{/if}}
+                </h3>
                 <p class="card-text"><b>Dirección:</b><br>{{furancho.address}}</p>
 
                 {{#if furancho.phone}}
@@ -34,43 +46,44 @@
                 </div>
 
                 <p class="card-text"><b>Menú:</b><br>{{furancho.menu}}</p>
-                <p class="card-text"><b>Horario:</b><br>{{furancho.schedule}}</p>
+                {{!-- <p class="card-text"><b>Horario:</b><br>{{furancho.schedule}}</p> --}}
 
                 <p><i>Furancho creado por {{furancho.author.name}} o {{prettyDate furancho.createdAt}}</i></p>
 
                 {{#if currentUser}}
-                <div class="d-grid">
-                    <a href="/furanchos/{{furancho.id}}/update" class="btn btn-primary mb-3">Actualizar</a>
+                <div>
+                    <a href="/furanchos/{{furancho.id}}/update" class="btn btn-success mb-3">Actualizar</a>
                 </div>
 
-                <div class="d-grid">
+                {{!-- <div class="d-grid">
                     <form onsubmit="onSubmit(event)" action="/furanchos/{{furancho.id}}/delete" method="POST">
                         <button type="submit" class="btn btn-danger">Eliminar furancho</button>
                     </form>
-                </div>
-                {{/if}}
+                </div> 
+               
 
-                <form action="/furanchos/{{furancho.id}}/detail" method="POST">
+                <form action="/furanchos/{{furancho.id}}/favourite" method="POST">
                     {{#favouriteFurancho currentUser furancho}}
-                    <button type="submit" class="btn btn-primary me-3">Favorito</button>
+                    <button type="submit">Favorito</button>
                     {{else}}
-                    <button type="submit" class="btn btn-danger me-3">No favorito</button>
+                    <button type="submit" class="btn btn-success me-3">Engadir a favoritos</button>
                     {{/favouriteFurancho}}
-                </form>
+                </form>--}}
+                 {{/if}}
             </div>
         </div>
     </div>
 </div>
 
-<form action="/furanchos/{{furancho.id}}/detail" method="POST">
-    <label for="floatingTextarea">Deixa o teu comentario</label>
-    <div class="form-floating">
+<form action="/furanchos/{{furancho.id}}/comment" method="POST">
+    <label for="floatingTextarea" class="mb-3">Deixa o teu comentario</label>
+    <div class="form-floating mb-3">
         <textarea name="content" class="form-control {{#if errors.content}}is-invalid{{/if}}"
             placeholder="Deixa o teu comentario"></textarea>
         {{#if errors.content}}<div class="invalid-feedback">{{errors.content}}</div>{{/if}}
     </div>
     <div class="d-grid">
-        <button type="submit" class="btn btn-success">Listo!</button>
+        <button type="submit" class="btn btn-success">Comenta!</button>
     </div>
 </form>
 

@@ -24,7 +24,7 @@
                 {{#if errors.password}}<div class="invalid-feedback">{{ errors.password }}</div>{{/if}}
             </div>
 
-            <div class="input-group mb-2">
+            <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-picture-o fa-fw"></i></span>
                 <input type="file" name="avatar" value="{{ user.avatar }}"
                     class="form-control {{#if errors.avatar }}is-invalid{{/if}}" placeholder="Sube  o teu avatar" />
@@ -32,13 +32,13 @@
             </div>
 
             <div class="d-grid">
-                <button class="btn btn-primary" type="submit">Register</button>
+                <button class="btn btn-success" type="submit">Register</button>
             </div>
 
         </form>
         <hr>
         <div class="d-grid">
-            <a class="btn btn-secondary" href="/furanchos">Login</a>
+            <a class="btn btn-secondary register-btn" href="/furanchos">Login</a>
         </div>
     </div>
 </div>

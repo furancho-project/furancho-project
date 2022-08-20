@@ -6,7 +6,7 @@ module.exports.detail = (req, res, next) => {
     User.findById(req.params.id)
         .populate({
             path: "favourites",
-            populate: { path: "userId" }
+            populate: { path: "furanchoId" }
         })
         .then((user) => {
             if (user) {
@@ -21,3 +21,4 @@ module.exports.detail = (req, res, next) => {
 module.exports.update = (req, res, next) => {
     res.render("users/update")
 }
+

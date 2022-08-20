@@ -23,6 +23,7 @@ const loadUser = (req, res, next) => {
     const { userId } = req.session
     if (userId) {
         User.findById(userId)
+        .populate("favourites")
             .then(user => {
                 req.user = user
                 res.locals.currentUser = user

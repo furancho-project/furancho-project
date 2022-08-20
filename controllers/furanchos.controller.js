@@ -1,10 +1,11 @@
 const { mongoose } = require("mongoose")
 const { Furancho } = require("../models")
 const menus = require("../data/menus.json")
+const cities = require("../data/cities.json")
 
 module.exports.list = (req, res, next) => {
 
-    const { name, lat, lng, terrace, accesibility, opened } = req.query
+    const { name, lat, lng, terrace, accesibility, opened, city } = req.query
     const criterial = {}
 
     if (lat && lng) {
@@ -40,15 +41,16 @@ module.exports.list = (req, res, next) => {
     }
 
 
+
     Furancho.find(criterial)
         .then(furanchos => {
-            res.render("furanchos/list2", { furanchos, query: req.query })
+            res.render("furanchos/list2", { furanchos, cities, query: req.query })
         })
         .catch(error => next(error))
 }
 
 module.exports.create = (req, res, next) => {
-    res.render("furanchos/new", { menus })
+    res.render("furanchos/new", { menus, cities})
 }
 
 module.exports.doCreate = (req, res, next) => {
@@ -74,7 +76,7 @@ module.exports.doCreate = (req, res, next) => {
         .catch(error => {
             console.error(error)
             if (error instanceof mongoose.Error.ValidationError) {
-                res.render("furanchos/new", { errors: error.errors, furancho, menus })
+                res.render("furanchos/new", { errors: error.errors, furancho, menus, cities })
             } else {
                 next(error)
             }
@@ -102,7 +104,7 @@ module.exports.update = (req, res, next) => {
     Furancho.findById(req.params.id)
         .then((furancho) => {
             if (furancho) {
-                res.render("furanchos/update", { furancho, menus })
+                res.render("furanchos/update", { furancho, menus, cities })
             } else {
                 res.redirect("/furanchos")
             }
@@ -141,4 +143,12 @@ module.exports.delete = (req, res, next) => {
         res.redirect("/furanchos")
     })
     .catch((err) => next(err))
+}
+
+module.exports.about = (req, res, next) => {
+    res.render("furanchos/about")
+}
+
+module.exports.aboutUs = (req, res, next) => {
+    res.render("furanchos/aboutus")
 }
