@@ -39,8 +39,6 @@ module.exports.list = (req, res, next) => {
         criterial.accesibility = true
     }
 
-
-
     Furancho.find(criterial)
         .then(furanchos => {
             res.render("furanchos/list", { furanchos, query: req.query })
@@ -57,7 +55,7 @@ module.exports.doCreate = (req, res, next) => {
     const furancho = req.body
     furancho.author = req.user.id
     
-    if ( req.file) {
+    if (req.file) {
         furancho.image = req.file.path
     } else {
         furancho.image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1659379039/furancho-project/bujki5wj7tnub3u0dsgj.jpg" 

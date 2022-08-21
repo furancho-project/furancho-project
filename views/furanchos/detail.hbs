@@ -1,43 +1,56 @@
-<div class="card mb-3">
-    <div class="row g-0 d-flex">
+<div class="card ms-5 mb-3 col-10">
+    <div class="row g-0 d-flex justify-content-center box-shadow grey-div">
         <div class="col-md-4">
             <img src="{{furancho.image}}" class="card-img-top" alt="...">
         </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                
-                {{#if currentUser}}
-                    <form action="/furanchos/{{furancho.id}}/favourite" method="POST">
-                    <h3 class="card-title" >{{furancho.name}} {{#favouriteFurancho currentUser furancho}}
-                    <button type="submit" class="like"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/640px-Heart_coraz%C3%B3n.svg.png" height ="50" width="50" /></button>
-                    {{else}}
-                    <button type="submit" class="like"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Heart_empty_font_awesome.svg/2048px-Heart_empty_font_awesome.svg.png" height ="50" width="50" /></button>
-                    {{/favouriteFurancho}}
-                    </form>
-                 {{else}}
-                <h3 class="card-title" >{{furancho.name}} 
-                 {{/if}}
-                </h3>
-                <p class="card-text"><b>Dirección:</b><br>{{furancho.address}}</p>
 
+        <div class="col-md-7 ps-5">
+            <div class="card-body">
+
+                {{#if currentUser}}
+                <form action="/furanchos/{{furancho.id}}/favourite" method="POST">
+                    <h3 class="card-title">{{furancho.name}} {{#favouriteFurancho currentUser furancho}}
+                        <button type="submit" class="like"><img
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/640px-Heart_coraz%C3%B3n.svg.png"
+                                height="50" width="50" /></button>
+                        {{else}}
+                        <button type="submit" class="like"><img
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Heart_empty_font_awesome.svg/2048px-Heart_empty_font_awesome.svg.png"
+                                height="50" width="50" /></button>
+                        {{/favouriteFurancho}}
+                    </h3>
+                </form>
+                {{else}}
+                <h3 class="card-title">{{furancho.name}}</h3>
+                {{/if}}
+
+                <p class="card-text"><i>{{furancho.description}}</i></p>
+                <p class="card-text"><i
+                        class="fa fa-envelope fa-fw color-icon-detail"></i>&nbsp;<b>Dirección:</b><br>{{furancho.address}}
+                </p>
                 {{#if furancho.phone}}
-                <p class="card-text"><b>Teléfono:</b><br>{{furancho.phone}}</p>
+                <p class="card-text"><i
+                        class="fa fa-phone fa-fw color-icon-detail"></i>&nbsp;<b>Teléfono:</b><br>{{furancho.phone}}</p>
                 {{else}}
                 {{/if}}
 
                 <div class="d-flex justify-content-evenly">
                     <div class="col-6">
-                        <p><b>Apertura:</b><br>{{prettyDate furancho.openAt}}</p>
+                        <p><i class="fa fa-calendar fa-fw color-icon-detail"></i>&nbsp;<b>Apertura:</b><br>{{prettyDate
+                            furancho.openAt}}</p>
                     </div>
                     <div class="col-6">
-                        <p><b>Peche:</b><br>{{closingDate furancho.openAt}}</p>
+                        <p><i class="fa fa-calendar fa-fw color-icon-detail"></i>&nbsp;<b>Peche:</b><br>{{closingDate
+                            furancho.openAt}}</p>
                     </div>
                 </div>
 
 
                 <div class="d-flex justify-content-evenly">
                     <div class="col-6">
-                        <p class="card-text"><b>Accesibilidade:</b><br>{{#if furancho.accesibility}}Si{{else}}No{{/if}}
+                        <p class="card-text"><i
+                                class="fa-brands fa-accessible-icon fa-fw color-icon-detail"></i>&nbsp;<b>Accesibilidade:</b><br>{{#if
+                            furancho.accesibility}}Si{{else}}No{{/if}}
                         </p>
                     </div>
                     <div class="col-6 mb-3">
@@ -46,21 +59,20 @@
                 </div>
 
                 <p class="card-text"><b>Menú:</b><br>{{furancho.menu}}</p>
-                {{!-- <p class="card-text"><b>Horario:</b><br>{{furancho.schedule}}</p> --}}
 
                 <p><i>Furancho creado por {{furancho.author.name}} o {{prettyDate furancho.createdAt}}</i></p>
 
                 {{#if currentUser}}
                 <div>
-                    <a href="/furanchos/{{furancho.id}}/update" class="btn btn-success mb-3">Actualizar</a>
+                    <a href="/furanchos/{{furancho.id}}/update" class="btn btn-success mb-3 ps-5 pe-5">Actualizar</a>
                 </div>
 
                 {{!-- <div class="d-grid">
                     <form onsubmit="onSubmit(event)" action="/furanchos/{{furancho.id}}/delete" method="POST">
                         <button type="submit" class="btn btn-danger">Eliminar furancho</button>
                     </form>
-                </div> 
-               
+                </div>
+
 
                 <form action="/furanchos/{{furancho.id}}/favourite" method="POST">
                     {{#favouriteFurancho currentUser furancho}}
@@ -69,31 +81,41 @@
                     <button type="submit" class="btn btn-success me-3">Engadir a favoritos</button>
                     {{/favouriteFurancho}}
                 </form>--}}
-                 {{/if}}
+                {{/if}}
             </div>
         </div>
     </div>
 </div>
 
-<form action="/furanchos/{{furancho.id}}/comment" method="POST">
-    <label for="floatingTextarea" class="mb-3">Deixa o teu comentario</label>
-    <div class="form-floating mb-3">
-        <textarea name="content" class="form-control {{#if errors.content}}is-invalid{{/if}}"
-            placeholder="Deixa o teu comentario"></textarea>
-        {{#if errors.content}}<div class="invalid-feedback">{{errors.content}}</div>{{/if}}
-    </div>
-    <div class="d-grid">
-        <button type="submit" class="btn btn-success">Comenta!</button>
-    </div>
-</form>
+<div class="card ms-5 mb-3 box-shadow col-10">
+    <div class="row g-0 d-flex ">
+        <form action="/furanchos/{{furancho.id}}/comment" method="POST">
+            <label for="floatingTextarea" class="mb-3"><b> Deixa o teu comentario:</b></label>
+            <div class="form-floating mb-3">
+                <textarea name="content" class="form-control {{#if errors.content}}is-invalid{{/if}}"
+                    placeholder="Deixa o teu comentario"></textarea>
+                {{#if errors.content}}<div class="invalid-feedback">{{errors.content}}</div>{{/if}}
+            </div>
+            <div class="d-flex justify-content-end ">
+                <button type="submit" class="btn btn-success ps-5 pe-5">Comenta!</button>
+            </div>
+        </form>
 
-<div>{{#each furancho.comments as |comment|}}
-    <ul>
-        <li><i>Comentario de {{comment.author.name}} do {{prettyDate comment.createdAt}}</i><br>{{comment.content}}</li>
-    </ul>
-    {{/each}}
+        <div>{{#each furancho.comments as |comment|}}
+            <ul>
+                <li>
+                    <a class="navbar-brand">
+                        <img class="navbar-avatar-icon comment-icon" src="{{comment.author.avatar}}" class="navar-icon"
+                            width="50" height="40">
+                    </a>
+                    <i>Comentario de {{comment.author.name}} do {{prettyDate
+                        comment.createdAt}}</i><br>{{comment.content}}
+                </li>
+            </ul>
+            {{/each}}
+        </div>
+    </div>
 </div>
-
 <script>
     function onSubmit(event) {
         if (!confirm('Seguro que queres borrar o furancho?')) {

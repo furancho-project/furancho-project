@@ -17,23 +17,23 @@ function initGMap() {
       gMarkers.forEach(({ name, lng, lat }) => {
 
         const infowindow = new google.maps.InfoWindow({
-        content: name
-      });
+          content: name
+        });
 
         const image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1659549980/furancho-project/phjt37yct3qisi0kgzfx.png";
-       
+
         const marker = new google.maps.Marker({
           position: { lng, lat },
           map: map,
           icon: image,
           name,
         });
-       
+
         marker.addListener("click", () => {
           infowindow.open({
             anchor: marker,
             map,
-            shouldFocus: false,
+            shouldFocus: true,
           });
         });
       });

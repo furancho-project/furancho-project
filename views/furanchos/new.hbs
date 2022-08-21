@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
   <div class="col-12 col-md-6 col-lg-8">
 
-    <h1 class="mb-4">Engade un novo furancho</h1>
+    <h2>Engade un novo furancho</h2>
 
     <form action="/furanchos/new" method="POST" enctype="multipart/form-data">
 
@@ -25,41 +25,23 @@
           {{#if errors.phone}}<div class="invalid-feedback">{{errors.phone}}</div>{{/if}}
         </div>
         <div class="input-group mb-2">
-          <span class="input-group-text"><i class="fa fa-picture-o fa-fw"></i></span>
+          <span class="input-group-text proba-color"><i class="fa fa-picture-o fa-fw"></i></span>
           <input type="file" name="image" value="{{ furancho.image }}"
             class="form-control {{#if errors.image }}is-invalid{{/if}}" placeholder="Sube unha URL de imaxe" />
           {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
         </div>
       </div>
 
+      <span>Enderezo:</span>
+      <div class="input-group mb-2">
+        <span class="input-group-text proba-color"><i class="fa fa-envelope fa-fw"></i></span>
+        <input name="address" value="{{furancho.address}}"
+          class="form-control g-places-finder {{#if errors.address}}is-invalid{{/if}}" placeholder="Enderezo">
+        {{#if errors.address}}<div class="invalid-feedback">{{errors.address}}</div>{{/if}}
+      </div>
+
       <input type="hidden" name="lat" value="{{furancho.lat}}" />
       <input type="hidden" name="lng" value="{{furancho.lng}}" />
-
-      <div class="d-flex justify-content-evenly">
-        <div class="col-6"><span>Enderezo:</span></div>
-        <div class="col-6"><span>Concello:</span></div>
-      </div>
-
-      <div class="d-flex justify-content-evenly">
-        <div class="input-group mb-2">
-          <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
-          <input name="address" value="{{furancho.address}}"
-            class="form-control g-places-finder {{#if errors.address}}is-invalid{{/if}}" placeholder="Enderezo">
-          {{#if errors.address}}<div class="invalid-feedback">{{errors.address}}</div>{{/if}}
-        </div>
-
-        <input type="hidden" name="lat" value="{{furancho.lat}}" />
-        <input type="hidden" name="lng" value="{{furancho.lng}}" />
-       
-        <div class="input-group mb-2">
-         <select name="city" value="{{furancho.city}}" class="form-select" >
-          <option value="" disabled selected> Selecciona un concello</option>
-          {{#each cities as | city | }}
-          <option value="city">{{city}}</option>
-          {{/each}}
-          </select>
-        </div>
-      </div>
 
       <div class="d-flex justify-content-evenly">
         <div class="col-4"><span>Accesibilidade:</span></div>
@@ -106,15 +88,13 @@
         {{#if errors.menu}}<div class="invalid-feedback">{{errors.menu}}</div>{{/if}}
       </div>
 
-      <!-- 
-      <span>Horario:</span>
+       <span>Descripción:</span>
       <div class="input-group mb-2">
         <span class="input-group-text"><i class="fa fa-clock-o fa-fw"></i></span>
-        <input name="schedule" value="{{furancho.schedule}}"
-          class="form-control {{#if errors.schedule}}is-invalid{{/if}}" placeholder="Horario do furancho">
-        {{#if errors.schedule}}<div class="invalid-feedback">{{errors.schedule}}</div>{{/if}}
+        <input name="description" value="{{furancho.description}}"
+          class="form-control {{#if errors.description}}is-invalid{{/if}}" placeholder="Descripción do furancho">
+        {{#if errors.description}}<div class="invalid-feedback">{{errors.description}}</div>{{/if}}
       </div>
-      -->
 
       <div class="d-grid">
         <button type="submit" class="btn btn-success">Listo!</button>

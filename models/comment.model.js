@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const commentSchema = new Schema({
     content: {
         type: "String",
-        maxLength: [200, "Número máximo de caracteres superado"],
+        maxLength: [400, "Número máximo de caracteres superado"],
         trim: true,
         require: true,
     },

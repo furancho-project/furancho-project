@@ -23,8 +23,10 @@ const furanchoSchema = new Schema({
     closeAt: { 
         type: Date,
     },
-    schedule: {
-        type: String
+    description: {
+        type: String,
+        maxLength: [500, "Excediches o número máximo de caracteres"],
+        trim: true,
     },
     address: {
         type: String,
