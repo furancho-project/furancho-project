@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const commentSchema = new Schema({
     content: {
         type: "String",
+        minLength: [2, "Ten que ter polo menos 3 caracteres"],
         maxLength: [400, "Número máximo de caracteres superado"],
         trim: true,
         require: true,

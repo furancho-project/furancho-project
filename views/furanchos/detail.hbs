@@ -1,7 +1,8 @@
 <div class="card ms-5 mb-3 col-10">
     <div class="row g-0 d-flex justify-content-center box-shadow grey-div">
-        <div class="col-md-4">
-            <img src="{{furancho.image}}" class="card-img-top" alt="...">
+        <div class="col-md-4 mt-3">
+            <img src="{{furancho.image}}" class="card-img-top mb-3" alt="...">
+            
         </div>
 
         <div class="col-md-7 ps-5">
@@ -9,22 +10,23 @@
 
                 {{#if currentUser}}
                 <form action="/furanchos/{{furancho.id}}/favourite" method="POST">
-                    <h3 class="card-title">{{furancho.name}} {{#favouriteFurancho currentUser furancho}}
+                    <h2 class="card-title mb-3 mt-3">{{furancho.name}} {{#favouriteFurancho currentUser furancho}}
                         <button type="submit" class="like"><img
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/640px-Heart_coraz%C3%B3n.svg.png"
+                                src="https://res.cloudinary.com/dyl3cklgp/image/upload/v1661108959/furancho-project/nm0ahsuiqsiaxkygvovg.png"
                                 height="50" width="50" /></button>
                         {{else}}
                         <button type="submit" class="like"><img
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Heart_empty_font_awesome.svg/2048px-Heart_empty_font_awesome.svg.png"
+                                src="https://res.cloudinary.com/dyl3cklgp/image/upload/v1661109170/furancho-project/hnqmqqhwydhislvd9om9.png"
                                 height="50" width="50" /></button>
                         {{/favouriteFurancho}}
-                    </h3>
+                    </h2>
                 </form>
                 {{else}}
-                <h3 class="card-title">{{furancho.name}}</h3>
+                <h2 class="card-title mb-3 mt-3">{{furancho.name}}</h3>
                 {{/if}}
 
-                <p class="card-text"><i>{{furancho.description}}</i></p>
+                <p class="card-text description"><i>{{furancho.description}}</i></p>
+                <p class="createdat mb-4 "><i>Furancho creado por {{furancho.author.name}} o {{prettyDate furancho.createdAt}}</i></p>
                 <p class="card-text"><i
                         class="fa fa-envelope fa-fw color-icon-detail"></i>&nbsp;<b>Dirección:</b><br>{{furancho.address}}
                 </p>
@@ -54,17 +56,17 @@
                         </p>
                     </div>
                     <div class="col-6 mb-3">
-                        <p class="card-text"><b>Zona Exterior:</b><br>{{#if furancho.terrace}}Si{{else}}No{{/if}}</p>
+                        <p class="card-text"><i class="fa-solid fa-sun fa-fw color-icon-detail"></i>&nbsp;<b>Zona Exterior:</b><br>{{#if furancho.terrace}}Si{{else}}No{{/if}}</p>
                     </div>
                 </div>
 
-                <p class="card-text"><b>Menú:</b><br>{{furancho.menu}}</p>
+                <p class="card-text "><i class="fa-solid fa-utensils fa-fw color-icon-detail"></i>&nbsp;<b>Menú:</b><br>{{furancho.menu}}</p>
 
-                <p><i>Furancho creado por {{furancho.author.name}} o {{prettyDate furancho.createdAt}}</i></p>
+                
 
                 {{#if currentUser}}
-                <div>
-                    <a href="/furanchos/{{furancho.id}}/update" class="btn btn-success mb-3 ps-5 pe-5">Actualizar</a>
+                <div class="d-flex justify-content-end">
+                    <a href="/furanchos/{{furancho.id}}/update" class="btn btn-success mt-3 mb-3 ps-5 pe-5">Actualizar furancho</a>
                 </div>
 
                 {{!-- <div class="d-grid">
@@ -88,7 +90,7 @@
 </div>
 
 <div class="card ms-5 mb-3 box-shadow col-10">
-    <div class="row g-0 d-flex ">
+    <div class="row g-0 d-flex m-5 mt-3">
         <form action="/furanchos/{{furancho.id}}/comment" method="POST">
             <label for="floatingTextarea" class="mb-3"><b> Deixa o teu comentario:</b></label>
             <div class="form-floating mb-3">
@@ -102,14 +104,15 @@
         </form>
 
         <div>{{#each furancho.comments as |comment|}}
-            <ul>
+            <ul class="comment-list">
                 <li>
                     <a class="navbar-brand">
                         <img class="navbar-avatar-icon comment-icon" src="{{comment.author.avatar}}" class="navar-icon"
                             width="50" height="40">
                     </a>
-                    <i>Comentario de {{comment.author.name}} do {{prettyDate
-                        comment.createdAt}}</i><br>{{comment.content}}
+                    <i class="comment-color">&nbsp;Comentario de <b>{{comment.author.name}}</b> do {{prettyDate
+                        comment.createdAt}}</i>
+                    <p class="comment-margin">{{comment.content}}</p>
                 </li>
             </ul>
             {{/each}}
