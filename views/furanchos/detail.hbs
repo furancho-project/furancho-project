@@ -66,7 +66,7 @@
 
                 {{#if currentUser}}
                 <div class="d-flex justify-content-end">
-                    <a href="/furanchos/{{furancho.id}}/update" class="btn btn-success mt-3 mb-3 ps-5 pe-5">Actualizar furancho</a>
+                    <a href="/furanchos/{{furancho.id}}/update" class="btn green-btn mt-3 mb-3 ps-5 pe-5">Actualizar furancho</a>
                 </div>
 
                 {{!-- <div class="d-grid">
@@ -92,14 +92,14 @@
 <div class="card ms-5 mb-3 box-shadow col-10">
     <div class="row g-0 d-flex m-5 mt-3">
         <form action="/furanchos/{{furancho.id}}/comment" method="POST">
-            <label for="floatingTextarea" class="mb-3"><b> Deixa o teu comentario:</b></label>
+            <label for="floatingTextarea" class="mb-3"><b> Deixa o teu comentario</b>&nbsp;<i class="fa-solid fa-comments fa-fw color-icon-detail"></i></label>
             <div class="form-floating mb-3">
                 <textarea name="content" class="form-control {{#if errors.content}}is-invalid{{/if}}"
                     placeholder="Deixa o teu comentario"></textarea>
                 {{#if errors.content}}<div class="invalid-feedback">{{errors.content}}</div>{{/if}}
             </div>
             <div class="d-flex justify-content-end ">
-                <button type="submit" class="btn btn-success ps-5 pe-5">Comenta!</button>
+                <button type="submit" class="btn green-btn ps-5 pe-5">Comenta!</button>
             </div>
         </form>
 
