@@ -31,7 +31,13 @@ function initGMap() {
         const infowindow = new google.maps.InfoWindow({
           content: windowContent
         });
+<<<<<<< HEAD
         const image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1659549980/furancho-project/phjt37yct3qisi0kgzfx.png";
+=======
+
+        const image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1661192281/furancho-project/b7tqvasrpipdnkkcgq87.png";
+
+>>>>>>> 267bfa73f8fc2fb57d3023a2c2d0dc825ba9a044
         const marker = new google.maps.Marker({
           position: { lng, lat },
           map: map,
