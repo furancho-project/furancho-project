@@ -5,6 +5,7 @@ const secure = require("../middlewares/secure.mid");
 
 const { furanchos, auth, comment, users, favourite } = require("../controllers");
 
+router.get("/", furanchos.redirect)
 router.get("/furanchos", furanchos.list);
 router.get("/furanchos/new", secure.isAuthenticated, furanchos.create);
 router.post("/furanchos/new", secure.isAuthenticated, upload.single('image'), furanchos.doCreate);

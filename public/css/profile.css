@@ -13,6 +13,7 @@
     text-align:center;
     color: black;
     margin-top: 3%;
+    font-size: 25px;
 }
 
 .data {
@@ -23,4 +24,15 @@
 
 .data-profile {
     text-align:center;
+    
+}
+
+.btn-delete {
+    background-color: rgb(112, 112, 112);
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: rgb(81, 82, 83);
+    color: white;
 }

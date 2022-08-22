@@ -62,11 +62,20 @@
 
                 <p class="card-text "><i class="fa-solid fa-utensils fa-fw color-icon-detail"></i>&nbsp;<b>Menú:</b><br>{{furancho.menu}}</p>
 
-                
+               
+                <div class="d-flex justify-content-end">
+                    <a href="/furanchos" class="btn green-btn mt-3 mb-3 me-3 ps-5 pe-5">Volver ao listado</a>
+                </div>
 
                 {{#if currentUser}}
-                <div class="d-flex justify-content-end">
-                    <a href="/furanchos/{{furancho.id}}/update" class="btn green-btn mt-3 mb-3 ps-5 pe-5">Actualizar furancho</a>
+                <div class="d-flex justify-content-end"> 
+                    <div>
+                        <a href="/furanchos" class="btn green-btn mt-3 mb-3 me-3 ps-5 pe-5">Volver ao listado</a>
+                    </div>
+
+                    <div class="d-inline-flex justify-content-evenly">
+                        <a href="/furanchos/{{furancho.id}}/update" class="btn green-btn mt-3 mb-3 ps-5 pe-5">Actualizar furancho</a>
+                    </div>
                 </div>
 
                 {{!-- <div class="d-grid">
