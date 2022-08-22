@@ -39,7 +39,7 @@ function initGMap() {
           content: windowContent
         });
 
-        const image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1659549980/furancho-project/phjt37yct3qisi0kgzfx.png";
+        const image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1661192281/furancho-project/b7tqvasrpipdnkkcgq87.png";
 
         const marker = new google.maps.Marker({
           position: { lng, lat },
