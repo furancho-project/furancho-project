@@ -17,7 +17,7 @@ function initGMap() {
       gMarkers.forEach(({ name, lng, lat }) => {
 
         const infowindow = new google.maps.InfoWindow({
-          content: name
+          content: content
         });
 
         const image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1659549980/furancho-project/phjt37yct3qisi0kgzfx.png";
