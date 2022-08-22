@@ -1,7 +1,7 @@
 const { User } = require("../models");
 const expressSession = require("express-session");
-const MongoStore = require('connect-mongo')
-const mongoose = require('mongoose')
+const MongoStore = require('connect-mongo');
+const mongoose = require('mongoose');
 
 const session = expressSession({
     secret: process.env.SESSION_SECRET || "secret",
@@ -23,7 +23,7 @@ const loadUser = (req, res, next) => {
     const { userId } = req.session
     if (userId) {
         User.findById(userId)
-        .populate("favourites")
+            .populate("favourites")
             .then(user => {
                 req.user = user
                 res.locals.currentUser = user
@@ -33,9 +33,9 @@ const loadUser = (req, res, next) => {
     } else {
         next()
     }
-}
+};
 
 module.exports = {
     session,
-    loadUser
-}
+    loadUser,
+};

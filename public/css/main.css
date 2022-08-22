@@ -1,9 +1,13 @@
 .background-detail {
     background-color: #C60053;
 }
-.fa-wheelchair-move.icon, .fa-utensils.icon, .fa-tree.icon {
-    color:#c60053;
+
+.fa-wheelchair-move.icon,
+.fa-utensils.icon,
+.fa-tree.icon {
+    color: #c60053;
 }
+
 .card-img-top {
     height: 200px;
 }
@@ -22,21 +26,22 @@
     padding-top: 3px;
     margin-top: 0;
 }
+
 .div-grey {
     position: relative;
 }
 
 .like {
-    border:none;
+    border: none;
     outline: none;
     position: absolute;
     background-color: white;
     right: 6%;
-    top:3%;
+    top: 3%;
 }
 
 .register-btn {
-    background-color:blue !important;
+    background-color: blue !important;
 }
 
 .btn-list {
@@ -58,26 +63,29 @@
 .color-icon-detail {
     color: #C60053;
 }
+
 .new-icon-color {
     background-color: #C60053;
+
     color: white;
 }
+
 .box-shadow {
-    box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.5);
 }
 
 .description {
-    text-align:justify;
+    text-align: justify;
 }
 
 .createdat {
-    text-align:right;
+    text-align: right;
     font-size: 12px;
 }
 
 .comment-list {
-list-style: none;
-margin-bottom: 25px;
+    list-style: none;
+    margin-bottom: 25px;
 }
 
 .comment-color {
@@ -88,39 +96,31 @@ margin-bottom: 25px;
 .comment-margin {
     margin-left: 51px;
     text-align: justify;
-    
+
 }
 
 .btn-pink {
     background-color: #C60053;
     color: white;
-    
-   
 }
 
 .btn-pink:hover {
     background-color: #7e0235;
     color: white;
-    
-   
 }
 
 .green-btn {
     background-color: rgb(119, 158, 84);
-    color:white;
-    
+    color: white;
 }
 
 .green-btn:hover {
     background-color: rgb(95, 128, 67);
-    color:white;
+    color: white;
 }
 
-
 .long-btn {
-  
-  text-align: center;
- 
+    text-align: center;
 }
 
 .margin-footer-login {
@@ -135,10 +135,10 @@ margin-bottom: 25px;
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 5px;
-    padding-bottom: 0px;;
+    padding-bottom: 0px;
+    ;
 }
 
 .window-marker-link {
-    text-align:end;
-   
+    text-align: end;
 }

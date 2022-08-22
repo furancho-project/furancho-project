@@ -1,7 +1,15 @@
 module.exports.isAuthenticated = (req, res, next) => {
     if (req.user) {
-        next()
+        next();
     } else {
-        res.redirect("/login")
+        res.redirect("/login");
     }
-}
+};
+
+module.exports.isAdmin = (req, res, next) => {
+    if (req.user.admin) {
+        next();
+    } else {
+        res.redirect("/furanchos");
+    }
+};

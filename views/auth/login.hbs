@@ -3,31 +3,31 @@
     <h2 class="mb-3">Inicia sesión</h2>
     <form action="/login" method="POST">
 
-    {{#if errors}}
-        <div class="alert alert-danger" role="alert">Email ou contrasinal erróneos</div>
-    {{/if}}
-        
-        <div class="input-group mb-3">
-            <span class="input-group-text new-icon-color"><i class="fa fa-envelope-o fa-fw " ></i></span>
-            <input type="email" name="email" value="{{user.email}}" class="form-control" placeholder="nome@exemplo.com">
-            {{#if errors.email}}<div class="invalid-feedback">{{errors.email}}</div>{{/if}}
-        </div>
+      {{#if errors}}
+      <div class="alert alert-danger" role="alert">Email ou contrasinal erróneos</div>
+      {{/if}}
 
-        <div class="input-group mb-3">
-            <span class="input-group-text new-icon-color"><i class="fa fa-key fa-fw"></i></span>
-            <input type="password" name="password" class="form-control" placeholder="Contrasinal">
-            {{#if errors.password}}<div class="invalid-feedback">{{errors.password}}</div>{{/if}}
-        </div>
-        
-        <div class="d-grid">
-            <button type="submit" class="btn green-btn">Iniciar sesión</button>
-        </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text new-icon-color"><i class="fa fa-envelope-o fa-fw "></i></span>
+        <input type="email" name="email" value="{{user.email}}" class="form-control" placeholder="nome@exemplo.com">
+        {{#if errors.email}}<div class="invalid-feedback">{{errors.email}}</div>{{/if}}
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text new-icon-color"><i class="fa fa-key fa-fw"></i></span>
+        <input type="password" name="password" class="form-control" placeholder="Contrasinal">
+        {{#if errors.password}}<div class="invalid-feedback">{{errors.password}}</div>{{/if}}
+      </div>
+
+      <div class="d-grid">
+        <button type="submit" class="btn green-btn">Iniciar sesión</button>
+      </div>
 
     </form>
 
     <hr>
-    
-    <div  class="d-grid">
+
+    <div class="d-grid">
       <a href="/register" class="btn btn-pink margin-footer-login">Crear usuario</a>
     </div>
   </div>

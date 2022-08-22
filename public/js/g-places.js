@@ -1,9 +1,9 @@
-const { furanchos } = require("../../controllers");
 function initGooglePlaces() {
   console.log("Places loaded");
   initPlacesSearchBar();
   initGMap();
-}
+};
+
 function initGMap() {
   const mapContainer = document.querySelector(".g-map");
   if (mapContainer) {
@@ -12,8 +12,10 @@ function initGMap() {
       zoom: 11.1,
       center: center,
     });
+
     if (gMarkers) {
       gMarkers.forEach(({ name, lng, lat, furanchoId }) => {
+
         // function setInfoWindow(idx) {
         //   google.maps.event.addListener(mark, 'click', function(event) {
         //       var iwindow = new google.maps.InfoWindow();
@@ -21,29 +23,29 @@ function initGMap() {
         //       iwindow.open(map, this);
         //   });
         // }
+
         const windowContent = '<div>' +
-        '<p class="window-marker"><i class="fa-solid fa-wine-bottle fa-fw color-icon-detail"></i>' +
-        name +
-        '</p>' +
-        '<span>&nbsp;</span>' +
-        '<a class="window-marker-link" href="/furanchos/'+ furanchoId +'/detail">' + "Ver furancho</a> " +
-        '</div>';
+
+          '<p class="window-marker"><i class="fa-solid fa-wine-bottle fa-fw color-icon-detail"></i>' +
+          name +
+          '</p>' +
+          '<span>&nbsp;</span>' +
+          '<a class="window-marker-link" href="/furanchos/' + furanchoId + '/detail">' + "Ver furancho</a> " +
+          '</div>';
+
         const infowindow = new google.maps.InfoWindow({
           content: windowContent
         });
-<<<<<<< HEAD
-        const image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1659549980/furancho-project/phjt37yct3qisi0kgzfx.png";
-=======
 
         const image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1661192281/furancho-project/b7tqvasrpipdnkkcgq87.png";
 
->>>>>>> 267bfa73f8fc2fb57d3023a2c2d0dc825ba9a044
         const marker = new google.maps.Marker({
           position: { lng, lat },
           map: map,
           icon: image,
           name,
         });
+
         marker.addListener("click", () => {
           infowindow.open({
             anchor: marker,
@@ -54,7 +56,8 @@ function initGMap() {
       });
     }
   }
-}
+};
+
 function initPlacesSearchBar() {
   const input = document.querySelector(".g-places-finder");
   if (input) {
@@ -70,8 +73,9 @@ function initPlacesSearchBar() {
       const lat = place.geometry.location.lat();
       const lng = place.geometry.location.lng();
       console.log(place, lat, lng);
+
       document.querySelector("[name='lat']").value = lat;
       document.querySelector("[name='lng']").value = lng;
     });
   }
-}
+};

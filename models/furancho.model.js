@@ -1,6 +1,6 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema
-const menus = require("../data/menus.json")
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const menus = require("../data/menus.json");
 
 PHONE_PATTERN = /^(6|7|8|9)([0-9][ -]*){8}$/
 
@@ -14,13 +14,13 @@ const furanchoSchema = new Schema({
     },
     phone: {
         type: String,
-        match: [PHONE_PATTERN,"Non é un número válido"],
+        match: [PHONE_PATTERN, "Non é un número válido"],
         trim: true,
     },
     openAt: {
         type: Date,
     },
-    closeAt: { 
+    closeAt: {
         type: Date,
     },
     description: {
@@ -36,7 +36,7 @@ const furanchoSchema = new Schema({
     location: {
         type: {
             type: String,
-            enum: ["Point"],  
+            enum: ["Point"],
         },
         coordinates: {
             type: [Number],
@@ -59,7 +59,7 @@ const furanchoSchema = new Schema({
         required: true
     },
     valid: false,
-    author:{
+    author: {
         type: Schema.Types.ObjectId,
         required: true,
         ref: "User",
@@ -68,21 +68,21 @@ const furanchoSchema = new Schema({
         type: String,
     }
 },
-{timestamps: true}
+    { timestamps: true }
 );
 
 furanchoSchema.virtual('comments', {
     ref: 'Comment',
     localField: '_id',
     foreignField: 'furancho',
-  });
+});
 
 furanchoSchema.pre('validate', function (next) {
     this.image = this.image || undefined;
     next();
 });
 
-furanchoSchema.index({ location: '2dsphere'})
+furanchoSchema.index({ location: '2dsphere' });
 
 const Furancho = mongoose.model("Furancho", furanchoSchema);
 module.exports = Furancho;

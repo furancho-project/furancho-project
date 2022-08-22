@@ -2,7 +2,6 @@
     <div class="row g-0 d-flex justify-content-center box-shadow grey-div">
         <div class="col-md-4 mt-3">
             <img src="{{furancho.image}}" class="card-img-top mb-3" alt="...">
-            
         </div>
 
         <div class="col-md-7 ps-5">
@@ -23,78 +22,76 @@
                 </form>
                 {{else}}
                 <h2 class="card-title mb-3 mt-3">{{furancho.name}}</h3>
-                {{/if}}
+                    {{/if}}
 
-                <p class="card-text description"><i>{{furancho.description}}</i></p>
-                <p class="createdat mb-4 "><i>Furancho creado por {{furancho.author.name}} o {{prettyDate furancho.createdAt}}</i></p>
-                <p class="card-text"><i
-                        class="fa fa-envelope fa-fw color-icon-detail"></i>&nbsp;<b>Dirección:</b><br>{{furancho.address}}
-                </p>
-                {{#if furancho.phone}}
-                <p class="card-text"><i
-                        class="fa fa-phone fa-fw color-icon-detail"></i>&nbsp;<b>Teléfono:</b><br>{{furancho.phone}}</p>
-                {{else}}
-                {{/if}}
+                    <p class="card-text description"><i>{{furancho.description}}</i></p>
+                    <p class="createdat mb-4 "><i>Furancho creado por {{furancho.author.name}} o {{prettyDate
+                            furancho.createdAt}}</i></p>
+                    <p class="card-text"><i
+                            class="fa fa-envelope fa-fw color-icon-detail"></i>&nbsp;<b>Dirección:</b><br>{{furancho.address}}
+                    </p>
+                    {{#if furancho.phone}}
+                    <p class="card-text"><i
+                            class="fa fa-phone fa-fw color-icon-detail"></i>&nbsp;<b>Teléfono:</b><br>{{furancho.phone}}
+                    </p>
+                    {{else}}
+                    {{/if}}
 
-                <div class="d-flex justify-content-evenly">
-                    <div class="col-6">
-                        <p><i class="fa fa-calendar fa-fw color-icon-detail"></i>&nbsp;<b>Apertura:</b><br>{{prettyDate
-                            furancho.openAt}}</p>
+                    <div class="d-flex justify-content-evenly">
+                        <div class="col-6">
+                            <p><i
+                                    class="fa fa-calendar fa-fw color-icon-detail"></i>&nbsp;<b>Apertura:</b><br>{{prettyDate
+                                furancho.openAt}}</p>
+                        </div>
+                        <div class="col-6">
+                            <p><i
+                                    class="fa fa-calendar fa-fw color-icon-detail"></i>&nbsp;<b>Peche:</b><br>{{closingDate
+                                furancho.openAt}}</p>
+                        </div>
                     </div>
-                    <div class="col-6">
-                        <p><i class="fa fa-calendar fa-fw color-icon-detail"></i>&nbsp;<b>Peche:</b><br>{{closingDate
-                            furancho.openAt}}</p>
+
+
+                    <div class="d-flex justify-content-evenly">
+                        <div class="col-6">
+                            <p class="card-text"><i
+                                    class="fa-brands fa-accessible-icon fa-fw color-icon-detail"></i>&nbsp;<b>Accesibilidade:</b><br>{{#if
+                                furancho.accesibility}}Si{{else}}No{{/if}}
+                            </p>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <p class="card-text"><i class="fa-solid fa-sun fa-fw color-icon-detail"></i>&nbsp;<b>Zona
+                                    Exterior:</b><br>{{#if furancho.terrace}}Si{{else}}No{{/if}}</p>
+                        </div>
                     </div>
-                </div>
 
+                    <p class="card-text "><i
+                            class="fa-solid fa-utensils fa-fw color-icon-detail"></i>&nbsp;<b>Menú:</b><br>{{furancho.menu}}
+                    </p>
 
-                <div class="d-flex justify-content-evenly">
-                    <div class="col-6">
-                        <p class="card-text"><i
-                                class="fa-brands fa-accessible-icon fa-fw color-icon-detail"></i>&nbsp;<b>Accesibilidade:</b><br>{{#if
-                            furancho.accesibility}}Si{{else}}No{{/if}}
-                        </p>
+                    {{#if currentUser}}
+                    <div class="d-flex justify-content-end">
+                        <div>
+                            <a href="/furanchos" class="btn green-btn mt-3 mb-3 me-3 ps-5 pe-5">Volver ao listado</a>
+                        </div>
+
+                        <div class="d-inline-flex justify-content-evenly">
+                            <a href="/furanchos/{{furancho.id}}/update"
+                                class="btn green-btn mt-3 mb-3 ps-5 pe-5">Actualizar furancho</a>
+                        </div>
                     </div>
-                    <div class="col-6 mb-3">
-                        <p class="card-text"><i class="fa-solid fa-sun fa-fw color-icon-detail"></i>&nbsp;<b>Zona Exterior:</b><br>{{#if furancho.terrace}}Si{{else}}No{{/if}}</p>
-                    </div>
-                </div>
-
-                <p class="card-text "><i class="fa-solid fa-utensils fa-fw color-icon-detail"></i>&nbsp;<b>Menú:</b><br>{{furancho.menu}}</p>
-
-               
-               
-
-                {{#if currentUser}}
-                <div class="d-flex justify-content-end"> 
-                    <div>
+                    {{else}}
+                    <div class="d-flex justify-content-end">
                         <a href="/furanchos" class="btn green-btn mt-3 mb-3 me-3 ps-5 pe-5">Volver ao listado</a>
                     </div>
+                    {{/if}}
 
-                    <div class="d-inline-flex justify-content-evenly">
-                        <a href="/furanchos/{{furancho.id}}/update" class="btn green-btn mt-3 mb-3 ps-5 pe-5">Actualizar furancho</a>
+                    {{#if currentUser.admin}}
+                    <div class="d-flex justify-content-end">
+                        <form onsubmit="onSubmit(event)" action="/furanchos/{{furancho.id}}/delete" method="POST">
+                            <button type="submit" class="btn btn-delete mt-1 mb-3  ps-5 pe-5">Eliminar furancho</button>
+                        </form>
                     </div>
-                </div>
-
-                {{!-- <div class="d-grid">
-                    <form onsubmit="onSubmit(event)" action="/furanchos/{{furancho.id}}/delete" method="POST">
-                        <button type="submit" class="btn btn-danger">Eliminar furancho</button>
-                    </form>
-                </div>
-
-
-                <form action="/furanchos/{{furancho.id}}/favourite" method="POST">
-                    {{#favouriteFurancho currentUser furancho}}
-                    <button type="submit">Favorito</button>
-                    {{else}}
-                    <button type="submit" class="btn btn-success me-3">Engadir a favoritos</button>
-                    {{/favouriteFurancho}}
-                </form>--}}
-                {{else}}
-                 <div class="d-flex justify-content-end">
-                    <a href="/furanchos" class="btn green-btn mt-3 mb-3 me-3 ps-5 pe-5">Volver ao listado</a>
-                </div>
-                {{/if}}
+                    {{/if}}
 
             </div>
         </div>
@@ -104,7 +101,8 @@
 <div class="card ms-5 mb-3 box-shadow col-10">
     <div class="row g-0 d-flex m-5 mt-3">
         <form action="/furanchos/{{furancho.id}}/comment" method="POST">
-            <label for="floatingTextarea" class="mb-3"><b> Deixa o teu comentario</b>&nbsp;<i class="fa-solid fa-comments fa-fw color-icon-detail"></i></label>
+            <label for="floatingTextarea" class="mb-3"><b> Deixa o teu comentario</b>&nbsp;<i
+                    class="fa-solid fa-comments fa-fw color-icon-detail"></i></label>
             <div class="form-floating mb-3">
                 <textarea name="content" class="form-control {{#if errors.content}}is-invalid{{/if}}"
                     placeholder="Deixa o teu comentario"></textarea>
@@ -131,6 +129,7 @@
         </div>
     </div>
 </div>
+
 <script>
     function onSubmit(event) {
         if (!confirm('Seguro que queres borrar o furancho?')) {

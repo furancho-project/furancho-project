@@ -1,6 +1,5 @@
-const { mongoose } = require("mongoose")
-const { Comment } = require("../models")
-
+const { mongoose } = require("mongoose");
+const { Comment } = require("../models");
 
 
 module.exports.list = (req, res, next) => {
@@ -14,15 +13,13 @@ module.exports.list = (req, res, next) => {
             res.render("furanchos/detail", { comments })
         })
         .catch(error => next(error))
-
-} 
+};
 
 module.exports.doCreate = (req, res, next) => {
     const comment = req.body
     comment.author = req.user.id
     comment.furancho = req.params.id
 
-   
     Comment.create(comment)
         .then(comment => res.redirect("back"))
         .catch(error => {
@@ -33,4 +30,4 @@ module.exports.doCreate = (req, res, next) => {
                 next(error)
             }
         })
-}
+};

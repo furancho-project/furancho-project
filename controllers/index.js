@@ -4,4 +4,5 @@ module.exports = {
     comment: require("./comment.controller"),
     users: require("./users.controller"),
     favourite: require("./favourite.controller"),
-}
+    misc: require("./misc.controller")
+};

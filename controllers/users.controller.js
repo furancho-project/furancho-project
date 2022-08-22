@@ -16,7 +16,7 @@ module.exports.detail = (req, res, next) => {
             }
         })
         .catch(err => next(err))
-}
+};
 
 module.exports.edit = (req, res, next) => {
     User.findById(req.params.id)
@@ -28,17 +28,17 @@ module.exports.edit = (req, res, next) => {
             }
         })
         .catch(err => next(err))
-}
+};
 
 module.exports.doEdit = (req, res, next) => {
     const newData = { name, password, avatar } = req.body
 
     if (req.file) {
         req.user.avatar = req.file.path
-    } 
+    }
 
-    if(!req.password) {
-        req.user.password 
+    if (!req.password) {
+        req.user.password
     }
 
     function renderWithErrors(errors) {
@@ -62,7 +62,7 @@ module.exports.doEdit = (req, res, next) => {
                 next(error)
             }
         })
-} 
+};
 
 module.exports.delete = (req, res, next) => {
 
@@ -71,4 +71,4 @@ module.exports.delete = (req, res, next) => {
             res.redirect("/furanchos")
         })
         .catch((err) => next(err))
-}
+};

@@ -16,10 +16,10 @@ const commentSchema = new Schema({
     furancho: {
         type: Schema.Types.ObjectId,
         ref: "Furancho",
-    }
+    },
 },
-{timestamps: true}
-)
+    { timestamps: true }
+);
 
 const Comment = mongoose.model('Comment', commentSchema);
 module.exports = Comment;

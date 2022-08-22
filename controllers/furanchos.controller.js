@@ -1,10 +1,10 @@
-const { mongoose } = require("mongoose")
-const { Furancho } = require("../models")
-const menus = require("../data/menus.json")
+const { mongoose } = require("mongoose");
+const { Furancho } = require("../models");
+const menus = require("../data/menus.json");
 
 module.exports.redirect = (req, res, next) => {
     res.redirect("/furanchos")
-}
+};
 
 module.exports.list = (req, res, next) => {
 
@@ -14,23 +14,23 @@ module.exports.list = (req, res, next) => {
     if (lat && lng) {
         criterial.location = {
             $near: {
-              $geometry: {
-                type: "Point",
-                coordinates: [lng, lat]
-             },
-             $maxDistance: 25000
-           }
-         }
+                $geometry: {
+                    type: "Point",
+                    coordinates: [lng, lat]
+                },
+                $maxDistance: 25000
+            }
+        }
     }
 
-    if(name) {
+    if (name) {
         criterial.name = new RegExp(name, "i")
     }
 
     if (opened) {
         const d = new Date()
         d.setMonth(d.getMonth() - 3)
-    
+
         const closingDate = new Date()
         criterial.openAt = { $gte: d, $lte: closingDate }
     }
@@ -48,21 +48,21 @@ module.exports.list = (req, res, next) => {
             res.render("furanchos/list", { furanchos, query: req.query })
         })
         .catch(error => next(error))
-}
+};
 
 module.exports.create = (req, res, next) => {
     res.render("furanchos/new", { menus })
-}
+};
 
 module.exports.doCreate = (req, res, next) => {
     const { lat, lng } = req.body
     const furancho = req.body
     furancho.author = req.user.id
-    
+
     if (req.file) {
         furancho.image = req.file.path
     } else {
-        furancho.image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1659379039/furancho-project/bujki5wj7tnub3u0dsgj.jpg" 
+        furancho.image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1659379039/furancho-project/bujki5wj7tnub3u0dsgj.jpg"
     }
 
     if (lat && lng) {
@@ -82,7 +82,7 @@ module.exports.doCreate = (req, res, next) => {
                 next(error)
             }
         })
-}
+};
 
 module.exports.detail = (req, res, next) => {
     Furancho.findById(req.params.id)
@@ -99,7 +99,7 @@ module.exports.detail = (req, res, next) => {
             }
         })
         .catch(err => next(err))
-}
+};
 
 module.exports.update = (req, res, next) => {
     Furancho.findById(req.params.id)
@@ -111,21 +111,21 @@ module.exports.update = (req, res, next) => {
             }
         })
         .catch(err => next(err))
-}
+};
 
 module.exports.doUpdate = (req, res, next) => {
-        const furancho = req.body
-        furancho.author = req.user.id
+    const furancho = req.body
+    furancho.author = req.user.id
 
-        if ( req.file) {
-            furancho.image = req.file.path
-        } else {
-            furancho.image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1659379039/furancho-project/bujki5wj7tnub3u0dsgj.jpg"  
-        }
-        
-        Furancho.findByIdAndUpdate(req.params.id, furancho, { runValidators: true })
+    if (req.file) {
+        furancho.image = req.file.path
+    } else {
+        furancho.image = "https://res.cloudinary.com/dyl3cklgp/image/upload/v1659379039/furancho-project/bujki5wj7tnub3u0dsgj.jpg"
+    }
+
+    Furancho.findByIdAndUpdate(req.params.id, furancho, { runValidators: true })
         .then((furancho) => {
-                res.redirect(`/furanchos/${furancho.id}/detail`)
+            res.redirect(`/furanchos/${furancho.id}/detail`)
         })
         .catch(error => {
             console.error(error)
@@ -135,22 +135,19 @@ module.exports.doUpdate = (req, res, next) => {
                 next(error)
             }
         })
-}
+};
 
 module.exports.delete = (req, res, next) => {
-    
+
     Furancho.findByIdAndDelete(req.params.id)
-    .then(() => {
-        res.redirect("/furanchos")
-    })
-    .catch((err) => next(err))
-}
+        .then(() => {
+            res.redirect("/furanchos")
+        })
+        .catch((err) => next(err))
+};
 
 module.exports.about = (req, res, next) => {
     res.render("furanchos/about")
-}
+};
 
-module.exports.aboutUs = (req, res, next) => {
-    res.render("furanchos/aboutus")
-}
 

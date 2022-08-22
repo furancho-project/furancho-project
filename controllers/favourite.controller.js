@@ -26,13 +26,13 @@ module.exports.create = (req, res, next) => {
 
 module.exports.list = (req, res, next) => {
 
-    Favourite.find()
-        .populate({
-            path: "favourites",
-            populate: { path: "userId" }
-        })
-        .then(favourites => {
-            res.render("users/profile", { favourites, furanchos })
-        })
-        .catch(error => next(error))
-} 
+  Favourite.find()
+    .populate({
+      path: "favourites",
+      populate: { path: "userId" }
+    })
+    .then(favourites => {
+      res.render("users/profile", { favourites, furanchos })
+    })
+    .catch(error => next(error))
+};
