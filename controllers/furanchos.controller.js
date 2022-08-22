@@ -2,6 +2,10 @@ const { mongoose } = require("mongoose")
 const { Furancho } = require("../models")
 const menus = require("../data/menus.json")
 
+module.exports.redirect = (req, res, next) => {
+    res.redirect("/furanchos")
+}
+
 module.exports.list = (req, res, next) => {
 
     const { name, lat, lng, terrace, accesibility, opened } = req.query
@@ -149,3 +153,4 @@ module.exports.about = (req, res, next) => {
 module.exports.aboutUs = (req, res, next) => {
     res.render("furanchos/aboutus")
 }
+

@@ -62,11 +62,18 @@
 
                 <p class="card-text "><i class="fa-solid fa-utensils fa-fw color-icon-detail"></i>&nbsp;<b>Menú:</b><br>{{furancho.menu}}</p>
 
-                
+               
+               
 
                 {{#if currentUser}}
-                <div class="d-flex justify-content-end">
-                    <a href="/furanchos/{{furancho.id}}/update" class="btn green-btn mt-3 mb-3 ps-5 pe-5">Actualizar furancho</a>
+                <div class="d-flex justify-content-end"> 
+                    <div>
+                        <a href="/furanchos" class="btn green-btn mt-3 mb-3 me-3 ps-5 pe-5">Volver ao listado</a>
+                    </div>
+
+                    <div class="d-inline-flex justify-content-evenly">
+                        <a href="/furanchos/{{furancho.id}}/update" class="btn green-btn mt-3 mb-3 ps-5 pe-5">Actualizar furancho</a>
+                    </div>
                 </div>
 
                 {{!-- <div class="d-grid">
@@ -83,7 +90,12 @@
                     <button type="submit" class="btn btn-success me-3">Engadir a favoritos</button>
                     {{/favouriteFurancho}}
                 </form>--}}
+                {{else}}
+                 <div class="d-flex justify-content-end">
+                    <a href="/furanchos" class="btn green-btn mt-3 mb-3 me-3 ps-5 pe-5">Volver ao listado</a>
+                </div>
                 {{/if}}
+
             </div>
         </div>
     </div>
@@ -99,7 +111,7 @@
                 {{#if errors.content}}<div class="invalid-feedback">{{errors.content}}</div>{{/if}}
             </div>
             <div class="d-flex justify-content-end ">
-                <button type="submit" class="btn green-btn ps-5 pe-5">Comenta!</button>
+                <button type="submit" class="btn btn-pink ps-5 pe-5">Comenta!</button>
             </div>
         </form>
 
