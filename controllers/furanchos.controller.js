@@ -18,7 +18,7 @@ module.exports.list = (req, res, next) => {
                     type: "Point",
                     coordinates: [lng, lat]
                 },
-                $maxDistance: 25000
+                $maxDistance: 5000
             }
         }
     }

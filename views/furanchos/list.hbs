@@ -18,7 +18,7 @@
                             placeholder="Busca polo nome do furancho...">
                         <span class="input-group-text new-icon-color"><i class="fa fa-globe"></i></span>
                         <input type="text" name="address" value="{{ query.address }}"
-                            class="form-control g-places-finder" placeholder="Busca polo enderezo enderezo...">
+                            class="form-control g-places-finder" placeholder="Busca polo enderezo...">
                     </div>
 
                     <input type="hidden" name="lat" />
@@ -65,7 +65,7 @@
 <div class="row">
     {{#each furanchos as |furancho|}}
     <div class="col-4">
-        <div class="card mb-3">
+        <div class="card mb-3 card-size">
             <img src="{{furancho.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{furancho.name}}</h4>
@@ -74,7 +74,7 @@
                     {{#if furancho.menu}}<i class="fa-solid fa-utensils icon">&nbsp;</i>{{else}}{{/if}}
                     {{#if furancho.terrace}}<i class="fa-solid fa-tree icon">&nbsp;</i>{{else}}&nbsp;{{/if}}</p>
                 </h4>
-                <p class="card-text"><b>Enderezo:</b><br>{{furancho.address}}</p>
+                <div class="address-box"><p class="card-text"><b>Enderezo:</b><br>{{furancho.address}}</p></div>
                 <div class="container p-0">
                     <div class="d-flex justify-content-evenly">
                         <div class="col-6">

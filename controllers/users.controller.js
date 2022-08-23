@@ -1,5 +1,5 @@
 const { mongoose } = require("mongoose");
-const { User } = require("../models");
+const { User, Furancho } = require("../models");
 
 
 module.exports.detail = (req, res, next) => {

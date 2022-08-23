@@ -142,3 +142,13 @@
 .window-marker-link {
     text-align: end;
 }
+
+.card-size {
+    height: 510px;
+    
+}
+
+
+.address-box {
+    height: 90px;
+}

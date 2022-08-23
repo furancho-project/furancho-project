@@ -16,14 +16,6 @@ function initGMap() {
     if (gMarkers) {
       gMarkers.forEach(({ name, lng, lat, furanchoId }) => {
 
-        // function setInfoWindow(idx) {
-        //   google.maps.event.addListener(mark, 'click', function(event) {
-        //       var iwindow = new google.maps.InfoWindow();
-        //       iwindow.setContent('<div><a href="' + furanchos.image + '" style="display:block;"><img src="' + adrsLength[idx].dataset.thumbnail + '" style="display:block;margin-bottom:10px;max-width:100%;"></a><h4>' + adrsLength[idx].dataset.address + '</h4><p>Bedrooms: ' + adrsLength[idx].dataset.bedroom + '<br />Bathrooms: ' + adrsLength[idx].dataset.bathroom + '<br /><span>' + adrsLength[idx].dataset.price + '</span></p></div>');
-        //       iwindow.open(map, this);
-        //   });
-        // }
-
         const windowContent = '<div>' +
 
           '<p class="window-marker"><i class="fa-solid fa-wine-bottle fa-fw color-icon-detail"></i>' +
