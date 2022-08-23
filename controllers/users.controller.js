@@ -2,6 +2,7 @@ const { mongoose } = require("mongoose");
 const { User, Furancho } = require("../models");
 
 
+
 module.exports.detail = (req, res, next) => {
     User.findById(req.params.id)
         .populate({
