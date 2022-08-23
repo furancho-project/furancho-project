@@ -1,5 +1,6 @@
 <div class="d-flex justify-content-center">
     <div class="flex-shrink-0">
+
         <div class="data-profile">
             <img class="avatar-profile" src="{{currentUser.avatar}}" class="col-3" alt="">
             <div>
@@ -7,13 +8,16 @@
                 <p><b>{{currentUser.email}}</b></p>
             </div>
         </div>
+
         <div class="d-grid mb-1">
             <a class="btn green-btn" href="/{{currentUser.id}}/edit">Editar perfil</a>
         </div>
+
         <form onsubmit="onSubmit(event)" action="/{{user.id}}/delete" method="POST" class="d-grid mb-3">
             <button type="submit" class="btn btn-delete">Borrar usuario</button>
         </form>
     </div>
+
     <div class="flex-grow-1 ms-3 favorites">
         <p><b>Os teus furanchos favoritos</b></p>
         <div class="row">
@@ -30,7 +34,7 @@
                             {{#if ffuranchoId.terrace}}<i class="fa-solid fa-tree icon">&nbsp;</i>{{else}}&nbsp;{{/if}}
                             </p>
                         </h4>
-                        <p class="card-text"><b>Enderezo:</b><br>{{furanchoId.address}}</p>
+                        <div class="address-box"><p class="card-text"><b>Enderezo:</b><br>{{furanchoId.address}}</p></div>
                         <div class="container p-0">
                             <div class="d-flex justify-content-evenly">
                                 <div class="col-6">
@@ -51,6 +55,7 @@
         </div>
     </div>
 </div>
+
 <script>
     function onSubmit(event) {
         if (!confirm('Seguro que queres borrar o teu usuario?')) {
